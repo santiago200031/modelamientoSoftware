@@ -12,9 +12,9 @@ import java.util.logging.Logger;
  */
 public class ConnectionDB {
 
-    private final String URL = "jdbc:mysql://localhost/", USERNAME = "root", PASSWORD = "";
+    private static final String URL = "jdbc:mysql://localhost/modelamiento", USERNAME = "root", PASSWORD = "";
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

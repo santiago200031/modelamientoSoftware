@@ -27,27 +27,26 @@ public class Login {
             JOptionPane.showMessageDialog(null, "La Contraseña se encuentra vacía.");
             return false;
         }
-
         try {
             // Seleccionar usuario y contraseña
-            String sqlUsername = "SELECT USERNAME FROM --- WHERE USU = ;";
-            ps = conn.prepareStatement(sqlUsername);
-            ResultSet rs = ps.executeQuery();
+            String sql = "SELECT USUARIO, CONTRASENIA FROM USUARIOS WHERE USUARIO = '" + usuario + "';";
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(sql);
+            rs.next();
             if (!usuario.equals(rs.getString("USUARIO"))) {
                 JOptionPane.showMessageDialog(null, "El Usuario no existe o está incorrecto.");
                 return false;
             }
-            String sqlPassword = "SELECT CONTRASENA FROM --- WHERE USU = ;";
-            ps = conn.prepareStatement(sqlPassword);
-            if (!password.equals(rs.getString("CONTRASENIA"))) {
+            if (usuario.equals(rs.getString("USUARIO")) && password.equals(rs.getString("CONTRASENIA"))) {
+                return true;
+            } else {
                 JOptionPane.showMessageDialog(null, "Clave incorrecta.");
                 return false;
             }
-            
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "El Usuario no existe o está incorrecto.");
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return false;
     }
 
