@@ -14,10 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class Login {
 
-    public Connection conn = ConnectionDB.getConnection();
+    public static Connection conn = ConnectionDB.getConnection();
+    static PreparedStatement ps;
 
     // Ingresar
-    public boolean ingresar(String usuario, String password) {
+    public static boolean ingresar(String usuario, String password) {
         if (esUsuarioVacio(usuario)) {
             JOptionPane.showMessageDialog(null, "El campo de Usuario se encuentra vacío.");
             return false;
@@ -29,15 +30,20 @@ public class Login {
 
         try {
             // Seleccionar usuario y contraseña
-            String usuarioDB, contraseña;
-            String sqlUsername = "SELECT * FROM --- WHERE ;";
-            
-            PreparedStatement ps = conn.prepareStatement(sqlUsername);
+            String sqlUsername = "SELECT USERNAME FROM --- WHERE USU = ;";
+            ps = conn.prepareStatement(sqlUsername);
             ResultSet rs = ps.executeQuery();
-            if (true) {
-
+            if (!usuario.equals(rs.getString("USUARIO"))) {
+                JOptionPane.showMessageDialog(null, "El Usuario no existe o está incorrecto.");
+                return false;
             }
-            String sqlPassword = "SELECT * FROM --- WHERE ;";
+            String sqlPassword = "SELECT CONTRASENA FROM --- WHERE USU = ;";
+            ps = conn.prepareStatement(sqlPassword);
+            if (!password.equals(rs.getString("CONTRASENIA"))) {
+                JOptionPane.showMessageDialog(null, "Clave incorrecta.");
+                return false;
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
