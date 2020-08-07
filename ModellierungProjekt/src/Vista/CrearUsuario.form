@@ -26,26 +26,29 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel3" pref="708" max="32767" attributes="0"/>
+              <Component id="jLabel3" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jbtnNatural" max="32767" attributes="0"/>
-                  <Component id="jbtnAfiliado" pref="655" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace pref="311" max="32767" attributes="0"/>
+              <Component id="jbtnCancelar" min="-2" pref="97" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jbtnAfiliado" min="-2" pref="655" max="-2" attributes="0"/>
+                          <Component id="jbtnNatural" min="-2" pref="655" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jbtnCancelar" min="-2" pref="97" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,9 +59,9 @@
               <Component id="jLabel3" min="-2" pref="84" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Component id="jbtnAfiliado" min="-2" pref="165" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="jbtnNatural" min="-2" pref="165" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="jbtnCancelar" min="-2" max="-2" attributes="0"/>
@@ -88,7 +91,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnCancelarActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jbtnCancelar.setHorizontalAlignment(SwingConstants.CENTER);"/>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jbtnCancelar.setHorizontalAlignment(SwingConstants.CENTER);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jbtnAfiliado">
@@ -108,7 +111,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnAfiliadoActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jbtnAfiliado.setHorizontalAlignment(SwingConstants.CENTER);"/>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jbtnAfiliado.setHorizontalAlignment(SwingConstants.CENTER);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jbtnNatural">
@@ -122,7 +125,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnNaturalActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jbtnNatural.setHorizontalAlignment(SwingConstants.CENTER);"/>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jbtnNatural.setHorizontalAlignment(SwingConstants.CENTER);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
