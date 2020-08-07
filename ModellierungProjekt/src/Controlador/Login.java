@@ -18,8 +18,8 @@ public class Login {
     static PreparedStatement ps;
 
     // Ingresar
-    public static boolean ingresar(String usuario, String password) {
-        if (esUsuarioVacio(usuario)) {
+    public static boolean ingresar(String cedula, String password) {
+        if (esUsuarioVacio(cedula)) {
             JOptionPane.showMessageDialog(null, "El campo de Usuario se encuentra vacío.");
             return false;
         }
@@ -29,15 +29,15 @@ public class Login {
         }
         try {
             // Seleccionar usuario y contraseña
-            String sql = "SELECT USUARIO, CONTRASENIA FROM USUARIOS WHERE USUARIO = '" + usuario + "';";
+            String sql = "SELECT CED_USU, CONT_USU FROM USUARIOS WHERE USUARIO = '" + cedula + "';";
             ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
             rs.next();
-            if (!usuario.equals(rs.getString("USUARIO"))) {
+            if (!cedula.equals(rs.getString("CED_USU"))) {
                 JOptionPane.showMessageDialog(null, "El Usuario no existe o está incorrecto.");
                 return false;
             }
-            if (usuario.equals(rs.getString("USUARIO")) && password.equals(rs.getString("CONTRASENIA"))) {
+            if (cedula.equals(rs.getString("CED_USU")) && password.equals(rs.getString("CONT_USU"))) {
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Clave incorrecta.");
