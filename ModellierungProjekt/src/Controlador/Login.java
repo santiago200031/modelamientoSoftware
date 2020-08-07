@@ -21,7 +21,6 @@ public class Login {
     public static Connection conn = ConnectionDB.getConnection();
     static PreparedStatement ps;
 
-    // Ingresar
     public static boolean ingresar(String cedula, String password) {
         if (esUsuarioVacio(cedula)) {
             JOptionPane.showMessageDialog(null, "El campo de Usuario se encuentra vacío.");
@@ -32,7 +31,7 @@ public class Login {
             return false;
         }
         try {
-            // Seleccionar usuario y contraseña
+            // Seleccionar usuario, contraseña y tipo de usuario
             String sql = "SELECT CED_USU, CONT_USU, ROL_USU FROM USUARIOS WHERE CED_USU = '" + cedula + "';";
             ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
