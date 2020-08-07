@@ -29,26 +29,26 @@
               <Component id="jLabel3" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="311" max="32767" attributes="0"/>
-              <Component id="jbtnCancelar" min="-2" pref="97" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbtnAfiliado" min="-2" pref="655" max="-2" attributes="0"/>
+                  <Component id="jbtnNatural" min="-2" pref="655" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jbtnCancelar" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jbtnAfiliado" min="-2" pref="655" max="-2" attributes="0"/>
-                          <Component id="jbtnNatural" min="-2" pref="655" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="301" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,7 +80,7 @@
           <Color blue="cc" green="99" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Bienvenido por primera vez"/>
+        <Property name="text" type="java.lang.String" value="Bienvenido !"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jbtnCancelar">
@@ -130,7 +130,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xbf;Qu&#xe9; deseas hacer con nuestro programa?"/>
+        <Property name="text" type="java.lang.String" value="&#xbf;Qu&#xe9; deseas hacer?"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&quot;, SwingConstants.CENTER)"/>
