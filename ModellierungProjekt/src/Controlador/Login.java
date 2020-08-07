@@ -12,6 +12,9 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
+ * @author Marlon Maisanche
+ * @author Monserrath Núñez
+ * @author Dayana Puetate
  */
 public class Login {
 
