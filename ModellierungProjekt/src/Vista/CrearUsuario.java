@@ -1,5 +1,7 @@
 package Vista;
 
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
@@ -18,17 +20,18 @@ public class CrearUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jbtnRegistrar = new javax.swing.JButton();
         jbtnCancelar = new javax.swing.JButton();
+        jbtnAfiliado = new javax.swing.JButton();
+        jbtnNatural = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel("", SwingConstants.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Bienvenido por primera vez");
-
-        jbtnRegistrar.setText("Registrarme");
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -36,6 +39,26 @@ public class CrearUsuario extends javax.swing.JFrame {
                 jbtnCancelarActionPerformed(evt);
             }
         });
+
+        jbtnAfiliado.setText("Promocionar mis productos");
+        jbtnAfiliado.setMaximumSize(new java.awt.Dimension(120, 28));
+        jbtnAfiliado.setMinimumSize(new java.awt.Dimension(120, 28));
+        jbtnAfiliado.setPreferredSize(new java.awt.Dimension(120, 28));
+        jbtnAfiliado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAfiliadoActionPerformed(evt);
+            }
+        });
+
+        jbtnNatural.setText("Buscar productos");
+        jbtnNatural.setPreferredSize(new java.awt.Dimension(120, 28));
+        jbtnNatural.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNaturalActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("¿Qué deseas hacer con nuestro programa?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -45,26 +68,40 @@ public class CrearUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbtnNatural, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnAfiliado, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbtnRegistrar)
-                .addGap(144, 144, 144)
                 .addComponent(jbtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(193, 193, 193))
+                .addGap(303, 303, 303))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 422, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnRegistrar)
-                    .addComponent(jbtnCancelar))
-                .addGap(35, 35, 35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jbtnAfiliado, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jbtnNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jbtnCancelar)
+                .addContainerGap())
         );
 
-        this.getRootPane().setDefaultButton(jbtnRegistrar);
+        jbtnCancelar.setHorizontalAlignment(SwingConstants.CENTER);
+        jbtnAfiliado.setHorizontalAlignment(SwingConstants.CENTER);
+        jbtnNatural.setHorizontalAlignment(SwingConstants.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -74,6 +111,16 @@ public class CrearUsuario extends javax.swing.JFrame {
         Controlador.CrearUsuario.abrirLogin();
         this.dispose();
     }//GEN-LAST:event_jbtnCancelarActionPerformed
+
+    private void jbtnAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAfiliadoActionPerformed
+        Controlador.CrearUsuario.abrirCrearAfiliado();
+        this.dispose();
+    }//GEN-LAST:event_jbtnAfiliadoActionPerformed
+
+    private void jbtnNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNaturalActionPerformed
+        Controlador.CrearUsuario.abrirCrearNatural();
+        this.dispose();
+    }//GEN-LAST:event_jbtnNaturalActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -106,8 +153,10 @@ public class CrearUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jbtnAfiliado;
     private javax.swing.JButton jbtnCancelar;
-    private javax.swing.JButton jbtnRegistrar;
+    private javax.swing.JButton jbtnNatural;
     // End of variables declaration//GEN-END:variables
 }

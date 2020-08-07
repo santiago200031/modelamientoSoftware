@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class Login {
 
-    public static Connection conn = ConnectionDB.getConnection();
-    static PreparedStatement ps;
+    private static final Connection conn = ConnectionDB.getConnection();
+    private static PreparedStatement ps;
 
     public static boolean ingresar(String cedula, String password) {
         if (esUsuarioVacio(cedula)) {
