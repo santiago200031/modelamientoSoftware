@@ -93,7 +93,10 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarActionPerformed
-        Controlador.Login.ingresar(jtxtUsuario.getText(), jtxtClave.getText());
+        boolean estadoIngresar = Controlador.Login.ingresar(jtxtUsuario.getText(), jtxtClave.getText());
+        if(estadoIngresar){
+            this.dispose();
+        }
     }//GEN-LAST:event_jbtnIngresarActionPerformed
 
     /**
@@ -124,10 +127,8 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 

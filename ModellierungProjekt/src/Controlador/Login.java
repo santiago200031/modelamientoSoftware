@@ -1,5 +1,7 @@
 package Controlador;
 
+import Vista.AfiliadoVentanaPrincipal;
+import Vista.NaturalVentanaPrincipal;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,7 +31,7 @@ public class Login {
         }
         try {
             // Seleccionar usuario y contraseña
-            String sql = "SELECT CED_USU, CONT_USU FROM USUARIOS WHERE CED_USU = '" + cedula + "';";
+            String sql = "SELECT CED_USU, CONT_USU, ROL_USU FROM USUARIOS WHERE CED_USU = '" + cedula + "';";
             ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -38,6 +40,17 @@ public class Login {
                 return false;
             }
             if (cedula.equals(rs.getString("CED_USU")) && password.equals(rs.getString("CONT_USU"))) {
+                switch (rs.getString("ROL_USU")) {
+                    case "NATURAL":
+                        new NaturalVentanaPrincipal().setVisible(true);
+                        break;
+                    case "AFILIADO":
+                        new AfiliadoVentanaPrincipal().setVisible(true);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "No se determinó el rol/tipo del usuario.");
+                        return false;
+                }
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Clave incorrecta.");
@@ -45,7 +58,6 @@ public class Login {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "El Usuario no existe o está incorrecto.");
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
