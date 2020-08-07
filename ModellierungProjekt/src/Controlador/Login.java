@@ -2,12 +2,11 @@ package Controlador;
 
 import Vista.AfiliadoVentanaPrincipal;
 import Vista.NaturalVentanaPrincipal;
+import Vista.CrearUsuario;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -68,5 +67,9 @@ public class Login {
 
     private static boolean esPasswordVacio(String password) {
         return password.equals("");
+    }
+
+    public static void abrirRegistrar() {
+        new CrearUsuario().setVisible(true);
     }
 }
