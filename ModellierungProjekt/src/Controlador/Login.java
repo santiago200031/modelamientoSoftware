@@ -29,9 +29,9 @@ public class Login {
         }
         try {
             // Seleccionar usuario y contraseña
-            String sql = "SELECT CED_USU, CONT_USU FROM USUARIOS WHERE USUARIO = '" + cedula + "';";
+            String sql = "SELECT CED_USU, CONT_USU FROM USUARIOS WHERE CED_USU = '" + cedula + "';";
             ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
             rs.next();
             if (!cedula.equals(rs.getString("CED_USU"))) {
                 JOptionPane.showMessageDialog(null, "El Usuario no existe o está incorrecto.");
