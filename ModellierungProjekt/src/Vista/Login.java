@@ -113,7 +113,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarActionPerformed
-        if (Controlador.Login.ingresar(jtxtCedula.getText(), jtxtClave.getText())) {
+        if (Controlador.Login.ingresarSistema(jtxtCedula.getText(), jtxtClave.getText())) {
             this.dispose();
         }
     }//GEN-LAST:event_jbtnIngresarActionPerformed

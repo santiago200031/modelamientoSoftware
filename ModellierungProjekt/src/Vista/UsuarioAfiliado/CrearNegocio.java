@@ -43,19 +43,20 @@ public class CrearNegocio extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jcbCiudad = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbtnGuardarNegocio = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Crear negocio.");
-        setPreferredSize(new java.awt.Dimension(720, 600));
+        setPreferredSize(new java.awt.Dimension(720, 720));
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setMaximumSize(new java.awt.Dimension(32767, 900));
 
         jPanel1.setBorder(null);
+        jPanel1.setPreferredSize(new java.awt.Dimension(720, 720));
 
         jtxtDireccion.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jtxtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -122,14 +123,19 @@ public class CrearNegocio extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnGuardarNegocio.setText("Guardar");
+        jbtnGuardarNegocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtnGuardarNegocioActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
+        jbtnCancelar.setText("Cancelar");
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,9 +145,9 @@ public class CrearNegocio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnGuardarNegocio, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(jbtnCancelar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,9 +220,9 @@ public class CrearNegocio extends javax.swing.JFrame {
                     .addComponent(jcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(973, Short.MAX_VALUE))
+                    .addComponent(jbtnCancelar)
+                    .addComponent(jbtnGuardarNegocio))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -242,16 +248,18 @@ public class CrearNegocio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controlador.Afiliado.CrearNegocio.guardarNegocio(jtxtRuc.getText(), jcbCategoria.getSelectedItem().toString().toUpperCase(), jtxtNombreNegocio.getText(), jtxtDireccion.getText(), Integer.parseInt(jtxtX.getText()), Integer.parseInt(jtxtY.getText()), jcbProvincia.getSelectedItem().toString().toUpperCase(), jcbCiudad.getSelectedItem().toString().toUpperCase());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbtnGuardarNegocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarNegocioActionPerformed
+        if (Controlador.Afiliado.CrearNegocio.guardarNegocio(jtxtRuc.getText(), jcbCategoria.getSelectedItem().toString().toUpperCase(), jtxtNombreNegocio.getText(), jtxtDireccion.getText(), Integer.parseInt(jtxtX.getText()), Integer.parseInt(jtxtY.getText()), jcbProvincia.getSelectedItem().toString().toUpperCase(), jcbCiudad.getSelectedItem().toString().toUpperCase())) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_jbtnGuardarNegocioActionPerformed
 
     private void jtxtNombreNegocioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreNegocioKeyTyped
         Controlador.Afiliado.CrearNegocio.toUpperCaseTyped(evt);
@@ -268,6 +276,10 @@ public class CrearNegocio extends javax.swing.JFrame {
     private void jcbCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbCiudadKeyTyped
         Controlador.Afiliado.CrearNegocio.toUpperCaseTyped(evt);
     }//GEN-LAST:event_jcbCiudadKeyTyped
+
+    private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,8 +315,6 @@ public class CrearNegocio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -316,6 +326,8 @@ public class CrearNegocio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtnCancelar;
+    private javax.swing.JButton jbtnGuardarNegocio;
     private javax.swing.JComboBox<String> jcbCategoria;
     private javax.swing.JComboBox<String> jcbCiudad;
     private javax.swing.JComboBox<String> jcbProvincia;
