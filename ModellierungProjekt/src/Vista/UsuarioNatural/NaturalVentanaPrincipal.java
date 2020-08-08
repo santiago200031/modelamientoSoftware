@@ -6,6 +6,7 @@
 package Vista.UsuarioNatural;
 
 import Vista.Login;
+import javax.swing.PopupFactory;
 
 /**
  *
@@ -13,9 +14,8 @@ import Vista.Login;
  */
 public class NaturalVentanaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NaturalVentanaPrincipal
-     */
+    private static PopupFactory model;
+
     public NaturalVentanaPrincipal() {
         initComponents();
     }
@@ -29,20 +29,29 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpmSugerenciaNombre = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtblDetalle = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jcbNombreProducto = new javax.swing.JComboBox<>();
-        jcbCodigoProducto = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jbtnAgregar = new javax.swing.JButton();
         jbtnReservar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jtxtNombreProducto = new javax.swing.JTextField();
+        jtxtCodigoProducto = new javax.swing.JTextField();
+        jtxtCantidad = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiCerrarSesion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+
+        jpmSugerenciaNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpmSugerenciaNombreMouseClicked(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +60,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Búsqueda de producto");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtblDetalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -59,7 +68,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                 "Codigo", "Nombre", "Cantidad", "Precio U.", "Subtotal"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtblDetalle);
 
         jLabel6.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel6.setText("NOMBRE DEL PROD.:");
@@ -67,17 +76,35 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel7.setText("CODIGO DEL PROD.:");
 
-        jcbNombreProducto.setEditable(true);
-        jcbNombreProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CARGAR CON CATEGORIAS", " " }));
-
-        jcbCodigoProducto.setEditable(true);
-        jcbCodigoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CARGAR CON CATEGORIAS", " " }));
-
-        jButton1.setText("Agregar");
+        jbtnAgregar.setText("Agregar");
+        jbtnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAgregarActionPerformed(evt);
+            }
+        });
 
         jbtnReservar.setText("Reservar");
+        jbtnReservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnReservarActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Restaurar");
+
+        jtxtNombreProducto.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jtxtNombreProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtNombreProductoKeyTyped(evt);
+            }
+        });
+
+        jtxtCodigoProducto.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
+        jtxtCantidad.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel8.setText("CANTIDAD:");
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(70, 27));
 
@@ -109,28 +136,32 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 62, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7))
-                                        .addGap(32, 32, 32)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jcbNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jcbCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(106, 106, 106))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtxtNombreProducto)
+                                    .addComponent(jtxtCodigoProducto)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(202, 202, 202)
+                                        .addComponent(jtxtCantidad))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jbtnReservar)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(68, 68, 68))))))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(68, 68, 68))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(23, 23, 23)
+                .addComponent(jbtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,19 +169,23 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jcbNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtxtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jcbCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(jtxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton1))
-                .addGap(39, 39, 39)
+                    .addComponent(jbtnAgregar))
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(jbtnReservar)
                 .addGap(49, 49, 49))
         );
@@ -165,6 +200,23 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_jmiCerrarSesionActionPerformed
+
+    private void jtxtNombreProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreProductoKeyTyped
+        //Controlador.Natural.NaturalVentanaPrincipal.toUpperCase(evt);
+        //Controlador.Natural.NaturalVentanaPrincipal.busquedaProductoNombre(jtxtNombreProducto.getText(), jpmSugerenciaNombre, this);
+    }//GEN-LAST:event_jtxtNombreProductoKeyTyped
+
+    private void jpmSugerenciaNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpmSugerenciaNombreMouseClicked
+        jtxtNombreProducto.setText(jpmSugerenciaNombre.getLabel());
+    }//GEN-LAST:event_jpmSugerenciaNombreMouseClicked
+
+    private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
+        Controlador.Natural.NaturalVentanaPrincipal.agregarDetalle(jtxtNombreProducto.getText(), jtxtCodigoProducto.getText(), jtblDetalle, Integer.parseInt(jtxtCantidad.getText()));
+    }//GEN-LAST:event_jbtnAgregarActionPerformed
+
+    private void jbtnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReservarActionPerformed
+        Controlador.Natural.NaturalVentanaPrincipal.realizarReserva();
+    }//GEN-LAST:event_jbtnReservarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,19 +252,22 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbtnAgregar;
     private javax.swing.JButton jbtnReservar;
-    private javax.swing.JComboBox<String> jcbCodigoProducto;
-    private javax.swing.JComboBox<String> jcbNombreProducto;
     private javax.swing.JMenuItem jmiCerrarSesion;
+    private javax.swing.JPopupMenu jpmSugerenciaNombre;
+    private javax.swing.JTable jtblDetalle;
+    public static javax.swing.JTextField jtxtCantidad;
+    public static javax.swing.JTextField jtxtCodigoProducto;
+    public static javax.swing.JTextField jtxtNombreProducto;
     // End of variables declaration//GEN-END:variables
 }
