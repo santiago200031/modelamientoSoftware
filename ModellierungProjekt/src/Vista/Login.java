@@ -1,5 +1,6 @@
 package Vista;
 
+import static Controlador.Afiliado.AfiliadoVentanaPrincipal.USUARIO_AFILIADO;
 import javax.swing.SwingConstants;
 
 /**
@@ -10,6 +11,7 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        USUARIO_AFILIADO = "";
     }
 
     @SuppressWarnings("unchecked")

@@ -48,6 +48,7 @@ public class CrearNegocio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Crear negocio.");
         setPreferredSize(new java.awt.Dimension(720, 600));
 
         jScrollPane1.setBorder(null);
@@ -56,6 +57,7 @@ public class CrearNegocio extends javax.swing.JFrame {
 
         jPanel1.setBorder(null);
 
+        jtxtDireccion.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jtxtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxtDireccionKeyTyped(evt);
@@ -65,6 +67,9 @@ public class CrearNegocio extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel2.setText("RUC:");
 
+        jtxtRuc.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
+        jtxtNombreNegocio.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jtxtNombreNegocio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxtNombreNegocioKeyTyped(evt);
@@ -83,8 +88,14 @@ public class CrearNegocio extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel6.setText("NOMBRE DEL NEGOCIO:");
 
+        jtxtX.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jtxtX.setToolTipText("Número entero.");
+
         jLabel7.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel7.setText("COORDENADA X:");
+
+        jtxtY.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jtxtY.setToolTipText("Número entero");
 
         jLabel8.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel8.setText("COORDENADA Y:");
@@ -219,7 +230,7 @@ public class CrearNegocio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -239,7 +250,7 @@ public class CrearNegocio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controlador.Afiliado.CrearNegocio.guardarNegocio(jtxtRuc.getText(), jcbCategoria.getSelectedItem().toString(), jtxtNombreNegocio.getText(), jtxtDireccion.getText(), Integer.parseInt(jtxtX.getText()), Integer.parseInt(jtxtY.getText()), jcbProvincia.getSelectedItem().toString(), jcbCiudad.getSelectedItem().toString());
+        Controlador.Afiliado.CrearNegocio.guardarNegocio(jtxtRuc.getText(), jcbCategoria.getSelectedItem().toString().toUpperCase(), jtxtNombreNegocio.getText(), jtxtDireccion.getText(), Integer.parseInt(jtxtX.getText()), Integer.parseInt(jtxtY.getText()), jcbProvincia.getSelectedItem().toString().toUpperCase(), jcbCiudad.getSelectedItem().toString().toUpperCase());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jtxtNombreNegocioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreNegocioKeyTyped

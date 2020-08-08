@@ -32,7 +32,7 @@ public class Login {
         }
         try {
             // Seleccionar usuario, contraseña y tipo de usuario
-            String sql = "SELECT CED_USU, CONT_USU, ROL_USU FROM USUARIOS WHERE CED_USU = '" + cedula + "';";
+            String sql = "SELECT CED_USU, SHA1(CONT_USU), ROL_USU FROM USUARIOS WHERE CED_USU = '" + cedula + "';";
             ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             rs.next();
