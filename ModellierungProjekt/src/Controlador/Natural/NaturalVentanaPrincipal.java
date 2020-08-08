@@ -80,9 +80,10 @@ public class NaturalVentanaPrincipal {
         }
     }
 
-    public static void realizarReserva() {
+    public static boolean realizarReserva() {
         if (JOptionPane.showConfirmDialog(null, "Desea continuar con la reserva?", "Confirmación de la reserva", JOptionPane.YES_NO_OPTION) == 1) {
-            
+            return true;
         }
+        return false;
     }
 }
