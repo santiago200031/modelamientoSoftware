@@ -61,8 +61,20 @@ public class CrearNegocio extends javax.swing.JFrame {
 
         jPanel1.setBorder(null);
 
+        jtxtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtDireccionKeyTyped(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel2.setText("RUC:");
+
+        jtxtNombreNegocio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtNombreNegocioKeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel3.setText("CATEGORIA:");
@@ -84,6 +96,11 @@ public class CrearNegocio extends javax.swing.JFrame {
 
         jcbProvincia.setEditable(true);
         jcbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CARGAR CON PROVINCIAS" }));
+        jcbProvincia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcbProvinciaKeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel9.setText("PROVINCIA:");
@@ -93,6 +110,11 @@ public class CrearNegocio extends javax.swing.JFrame {
 
         jcbCiudad.setEditable(true);
         jcbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CARGAR CON CATEGORIAS", " " }));
+        jcbCiudad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcbCiudadKeyTyped(evt);
+            }
+        });
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -222,8 +244,24 @@ public class CrearNegocio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controlador.Afiliado.CrearNegocio.guardarNegocio();
+        Controlador.Afiliado.CrearNegocio.guardarNegocio(jtxtRuc.getText(), jcbCategoria.getSelectedItem().toString(), jtxtNombreNegocio.getText(), jtxtDireccion.getText(), Integer.parseInt(jtxtX.getText()), Integer.parseInt(jtxtY.getText()), jcbProvincia.getSelectedItem().toString(), jcbCiudad.getSelectedItem().toString());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtxtNombreNegocioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreNegocioKeyTyped
+        Controlador.Afiliado.CrearNegocio.toUpperCaseTyped(evt);
+    }//GEN-LAST:event_jtxtNombreNegocioKeyTyped
+
+    private void jtxtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtDireccionKeyTyped
+        Controlador.Afiliado.CrearNegocio.toUpperCaseTyped(evt);
+    }//GEN-LAST:event_jtxtDireccionKeyTyped
+
+    private void jcbProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbProvinciaKeyTyped
+        Controlador.Afiliado.CrearNegocio.toUpperCaseTyped(evt);
+    }//GEN-LAST:event_jcbProvinciaKeyTyped
+
+    private void jcbCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbCiudadKeyTyped
+        Controlador.Afiliado.CrearNegocio.toUpperCaseTyped(evt);
+    }//GEN-LAST:event_jcbCiudadKeyTyped
 
     /**
      * @param args the command line arguments
