@@ -5,15 +5,16 @@
  */
 package Vista.UsuarioNatural;
 
+import static Controlador.Natural.NaturalVentanaPrincipal.tipoBusqueda;
+
 /**
  *
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
  */
 public class BusquedaAproximada extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BusquedaAproximada
-     */
+    public static String nomCodProducto = "";
+
     public BusquedaAproximada() {
         initComponents();
     }
@@ -29,6 +30,8 @@ public class BusquedaAproximada extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jlBusqueda = new javax.swing.JList<>();
+        jbtnSeleccionar = new javax.swing.JButton();
+        jbtnSeleccionar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,20 +39,63 @@ public class BusquedaAproximada extends javax.swing.JFrame {
         jlBusqueda.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jlBusqueda);
 
+        jbtnSeleccionar.setText("Seleccionar");
+        jbtnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSeleccionarActionPerformed(evt);
+            }
+        });
+
+        jbtnSeleccionar1.setText("Cancelar");
+        jbtnSeleccionar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSeleccionar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jbtnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtnSeleccionar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnSeleccionar1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        this.getRootPane().setDefaultButton(jbtnSeleccionar);
+        this.getRootPane().setDefaultButton(jbtnSeleccionar);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSeleccionarActionPerformed
+        nomCodProducto = jlBusqueda.getSelectedValue();
+        if (tipoBusqueda.equals("NOMBRE")) {
+            NaturalVentanaPrincipal.jtxtNombreProducto.setText(nomCodProducto);
+        } else if (tipoBusqueda.equals("CODIGO")) {
+            NaturalVentanaPrincipal.jtxtCodigoProducto.setText(nomCodProducto);
+        }
+        Controlador.Natural.NaturalVentanaPrincipal.cargarOtroDato(nomCodProducto);
+        this.dispose();
+    }//GEN-LAST:event_jbtnSeleccionarActionPerformed
+
+    private void jbtnSeleccionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSeleccionar1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtnSeleccionar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,15 +125,15 @@ public class BusquedaAproximada extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BusquedaAproximada().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new BusquedaAproximada().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtnSeleccionar;
+    private javax.swing.JButton jbtnSeleccionar1;
     public static javax.swing.JList<String> jlBusqueda;
     // End of variables declaration//GEN-END:variables
 }

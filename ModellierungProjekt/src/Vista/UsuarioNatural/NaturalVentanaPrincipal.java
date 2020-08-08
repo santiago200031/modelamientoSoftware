@@ -325,7 +325,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jpmSugerenciaNombre;
     private javax.swing.JTable jtblDetalle;
     private javax.swing.JTextField jtxtCantidad;
-    private javax.swing.JTextField jtxtCodigoProducto;
-    private javax.swing.JTextField jtxtNombreProducto;
+    public static javax.swing.JTextField jtxtCodigoProducto;
+    public static javax.swing.JTextField jtxtNombreProducto;
     // End of variables declaration//GEN-END:variables
 }
