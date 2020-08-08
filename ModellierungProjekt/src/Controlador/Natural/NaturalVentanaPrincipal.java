@@ -89,7 +89,7 @@ public class NaturalVentanaPrincipal {
     }
 
     public static boolean realizarReserva() {
-        if (JOptionPane.showConfirmDialog(null, "Desea continuar con la reserva?", "Confirmación de la reserva", JOptionPane.YES_NO_OPTION) == 1) {
+        if (JOptionPane.showConfirmDialog(null, "Desea continuar con la reserva?", "Confirmación de la reserva", JOptionPane.YES_NO_OPTION) == 0) {
             JOptionPane.showMessageDialog(null, "Reserva registrada correctamente.");
             //insertarReservaBD();
             return true;
