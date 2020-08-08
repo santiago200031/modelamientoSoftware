@@ -1,9 +1,9 @@
-package Controlador;
+package Controlador.Afiliado;
 
 /**
  *
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
  */
-public class CrearNatural {
+public class CrearAfiliado {
 
 }

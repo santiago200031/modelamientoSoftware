@@ -1,9 +1,9 @@
-package Controlador;
+package Controlador.Natural;
 
 /**
  *
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
  */
-public class CrearAfiliado {
+public class NaturalVentanaPrincipal {
 
 }

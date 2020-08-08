@@ -1,6 +1,6 @@
 package Vista;
 
-import javax.swing.SwingConstants; 
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -11,14 +11,14 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jbtnIngresar = new javax.swing.JButton();
         jlblCrearCuenta = new javax.swing.JLabel("", SwingConstants.CENTER);
-        jtxtUsuario = new javax.swing.JTextField();
+        jtxtCedula = new javax.swing.JTextField();
         jtxtClave = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -46,13 +46,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jtxtUsuario.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jtxtUsuario.setPreferredSize(new java.awt.Dimension(300, 30));
+        jtxtCedula.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jtxtCedula.setPreferredSize(new java.awt.Dimension(300, 30));
 
         jtxtClave.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jtxtClave.setPreferredSize(new java.awt.Dimension(300, 30));
 
-        jLabel1.setText("Usuario:");
+        jLabel1.setText("Cédula:");
 
         jLabel2.setText("Password:");
 
@@ -80,7 +80,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
-                    .addComponent(jtxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(221, 221, 221))
         );
@@ -92,7 +92,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -111,8 +111,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarActionPerformed
-        boolean estadoIngresar = Controlador.Login.ingresar(jtxtUsuario.getText(), jtxtClave.getText());
-        if(estadoIngresar){
+        if (Controlador.Login.ingresar(jtxtCedula.getText(), jtxtClave.getText())) {
             this.dispose();
         }
     }//GEN-LAST:event_jbtnIngresarActionPerformed
@@ -161,7 +160,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbtnIngresar;
     private javax.swing.JLabel jlblCrearCuenta;
+    private javax.swing.JTextField jtxtCedula;
     private javax.swing.JPasswordField jtxtClave;
-    private javax.swing.JTextField jtxtUsuario;
     // End of variables declaration//GEN-END:variables
 }

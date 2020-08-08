@@ -43,7 +43,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtxtUsuario" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtCedula" min="-2" max="-2" attributes="0"/>
                   <Component id="jtxtClave" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
@@ -58,7 +58,7 @@
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jtxtUsuario" min="-2" max="-2" attributes="0"/>
+              <Component id="jtxtCedula" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -106,7 +106,7 @@
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&quot;, SwingConstants.CENTER)"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtxtUsuario">
+    <Component class="javax.swing.JTextField" name="jtxtCedula">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="sansserif" size="14" style="0"/>
@@ -128,7 +128,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Usuario:"/>
+        <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

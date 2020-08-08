@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package Vista.UsuarioAfiliado;
+
+import Vista.Login;
 
 /**
  *
@@ -28,6 +30,7 @@ public class AfiliadoVentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jbtnNuevoNegocio = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiCerrarSesion = new javax.swing.JMenuItem();
@@ -39,6 +42,13 @@ public class AfiliadoVentanaPrincipal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestión de negocios");
+
+        jbtnNuevoNegocio.setText("Registrar nuevo negocio");
+        jbtnNuevoNegocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNuevoNegocioActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(70, 27));
 
@@ -67,12 +77,18 @@ public class AfiliadoVentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addComponent(jbtnNuevoNegocio, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(0, 511, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 447, Short.MAX_VALUE)
+                .addComponent(jbtnNuevoNegocio)
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -83,6 +99,10 @@ public class AfiliadoVentanaPrincipal extends javax.swing.JFrame {
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_jmiCerrarSesionActionPerformed
+
+    private void jbtnNuevoNegocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNuevoNegocioActionPerformed
+        Controlador.Afiliado.AfiliadoVentanaPrincipal.abrirNuevoNegocio();
+    }//GEN-LAST:event_jbtnNuevoNegocioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,6 +142,7 @@ public class AfiliadoVentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton jbtnNuevoNegocio;
     private javax.swing.JMenuItem jmiCerrarSesion;
     // End of variables declaration//GEN-END:variables
 }

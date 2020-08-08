@@ -1,7 +1,7 @@
 package Controlador;
 
-import Vista.AfiliadoVentanaPrincipal;
-import Vista.NaturalVentanaPrincipal;
+import Vista.UsuarioAfiliado.AfiliadoVentanaPrincipal;
+import Vista.UsuarioNatural.NaturalVentanaPrincipal;
 import Vista.CrearUsuario;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
@@ -52,6 +52,7 @@ public class Login {
                         JOptionPane.showMessageDialog(null, "No se determinó el rol/tipo del usuario.");
                         return false;
                 }
+                Controlador.Afiliado.AfiliadoVentanaPrincipal.USUARIO_AFILIADO = cedula;
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Clave incorrecta.");

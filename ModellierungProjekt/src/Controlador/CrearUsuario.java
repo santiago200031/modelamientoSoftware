@@ -13,11 +13,11 @@ public class CrearUsuario {
     }
 
     public static void abrirCrearNatural() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         new Vista.UsuarioNatural.CrearNatural().setVisible(true);
     }
 
     public static void abrirCrearAfiliado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        new Vista.UsuarioAfiliado.CrearAfiliado().setVisible(true);
     }
 
 }
