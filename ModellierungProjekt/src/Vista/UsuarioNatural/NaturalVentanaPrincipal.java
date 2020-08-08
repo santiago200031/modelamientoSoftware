@@ -42,6 +42,8 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
         jtxtCodigoProducto = new javax.swing.JTextField();
         jtxtCantidad = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jlblTotal = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiCerrarSesion = new javax.swing.JMenuItem();
@@ -106,6 +108,10 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel8.setText("CANTIDAD:");
 
+        jLabel2.setText("Total:");
+
+        jlblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
         jMenuBar1.setPreferredSize(new java.awt.Dimension(70, 27));
 
         jMenu1.setText("File");
@@ -136,8 +142,19 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addGap(23, 23, 23)
+                                .addComponent(jbtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(217, 217, 217))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(110, 110, 110)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel6)
@@ -150,18 +167,16 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(202, 202, 202)
                                         .addComponent(jtxtCantidad))))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(62, 62, 62)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jbtnReservar)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jlblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(68, 68, 68))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(23, 23, 23)
-                .addComponent(jbtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +200,13 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jbtnAgregar))
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28)
                 .addComponent(jbtnReservar)
-                .addGap(49, 49, 49))
+                .addGap(27, 27, 27))
         );
 
         this.getRootPane().setDefaultButton(jbtnReservar);
@@ -202,7 +221,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiCerrarSesionActionPerformed
 
     private void jtxtNombreProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreProductoKeyTyped
-        //Controlador.Natural.NaturalVentanaPrincipal.toUpperCase(evt);
+        Controlador.Natural.NaturalVentanaPrincipal.toUpperCase(evt);
         //Controlador.Natural.NaturalVentanaPrincipal.busquedaProductoNombre(jtxtNombreProducto.getText(), jpmSugerenciaNombre, this);
     }//GEN-LAST:event_jtxtNombreProductoKeyTyped
 
@@ -211,7 +230,8 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jpmSugerenciaNombreMouseClicked
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
-        Controlador.Natural.NaturalVentanaPrincipal.agregarDetalle(jtxtNombreProducto.getText(), jtxtCodigoProducto.getText(), jtblDetalle, Integer.parseInt(jtxtCantidad.getText()));
+        Controlador.Natural.NaturalVentanaPrincipal.agregarDetalle(jtxtNombreProducto.getText(), jtxtCodigoProducto.getText(), jtblDetalle, Integer.parseInt(jtxtCantidad.getText()), jlblTotal);
+        Controlador.Natural.NaturalVentanaPrincipal.calcularTotal(jtblDetalle, jlblTotal);
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 
     private void jbtnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReservarActionPerformed
@@ -254,6 +274,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -263,6 +284,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtnAgregar;
     private javax.swing.JButton jbtnReservar;
+    private javax.swing.JLabel jlblTotal;
     private javax.swing.JMenuItem jmiCerrarSesion;
     private javax.swing.JPopupMenu jpmSugerenciaNombre;
     private javax.swing.JTable jtblDetalle;
