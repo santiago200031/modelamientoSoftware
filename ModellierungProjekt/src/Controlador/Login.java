@@ -44,16 +44,17 @@ public class Login {
             if (cedula.equals(rs.getString("CED_USU")) && password.equals(rs.getString("CONT_USU"))) {
                 switch (rs.getString("ROL_USU")) {
                     case "NATURAL":
+                        Controlador.Natural.NaturalVentanaPrincipal.USUARIO_NATURAL = cedula;
                         new NaturalVentanaPrincipal().setVisible(true);
                         break;
                     case "AFILIADO":
+                        Controlador.Afiliado.AfiliadoVentanaPrincipal.USUARIO_AFILIADO = cedula;
                         new AfiliadoVentanaPrincipal().setVisible(true);
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "No se determinó el rol/tipo del usuario.");
                         return false;
                 }
-                Controlador.Afiliado.AfiliadoVentanaPrincipal.USUARIO_AFILIADO = cedula;
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Clave incorrecta.");

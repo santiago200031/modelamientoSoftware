@@ -6,4 +6,6 @@ package Controlador.Natural;
  */
 public class NaturalVentanaPrincipal {
 
+    public static String USUARIO_NATURAL;
+    
 }
