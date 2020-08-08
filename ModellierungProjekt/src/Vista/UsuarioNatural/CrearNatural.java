@@ -5,6 +5,12 @@
  */
 package Vista.UsuarioNatural;
 
+import Controlador.ConnectionDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
@@ -18,6 +24,63 @@ public class CrearNatural extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void guardar() {
+        if (jtxtCedula.getText().isEmpty() || jtxtCedula.getText().equals("0000000000")) {
+            JOptionPane.showMessageDialog(null, "INGRESAR CÉDULA");
+            jtxtCedula.requestFocus();
+        } else if (jtxtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESAR  NOMBRE");
+            jtxtNombre.requestFocus();
+        } else if (jtxtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESAR APELLIDO");
+            jtxtApellido.requestFocus();
+        } else if (jpwdContrasenia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESAR CONTRASEÑA");
+            jpwdContrasenia.requestFocus();
+        } else if (jtxtDireccionX.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
+            jtxtDireccionX.requestFocus();
+        } else if (jtxtDireccionY.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
+            jtxtDireccionY.requestFocus();
+        } else if (jtxtDireccion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
+            jtxtDireccion.requestFocus();
+        } else if (jtxtRol.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESAR Rol");
+            jtxtRol.requestFocus();
+        } else {
+            try {
+                ConnectionDB cc = new ConnectionDB();
+                Connection cn = cc.conn();
+                String CED_USU, CONT_USU, ROL_USU, NOM_USU, APE_USU, DIR_X, DIR_Y, DIR_USU_NORMAL;
+                String sql = "";
+                CED_USU = jtxtCedula.getText();
+                CONT_USU = String.valueOf(jpwdContrasenia.getPassword());
+                ROL_USU = jtxtRol.getText();
+                NOM_USU = jtxtNombre.getText();
+                APE_USU = jtxtApellido.getText();
+                DIR_X = jtxtDireccionX.getText();
+                DIR_Y = jtxtDireccionY.getText();
+                DIR_USU_NORMAL = jtxtDireccion.getText();
+                sql = "INSERT INTO USUARIOS(CED_USU, CONT_USU, ROL_USU, NOM_USU, APE_USU, DIR_X, DIR_Y, DIR_USU_NORMAL)values(?,?,?,?,?,?,?,?)";
+                PreparedStatement ps = cn.prepareStatement(sql);
+                ps.setString(1, CED_USU);
+                ps.setString(3, CONT_USU);
+                ps.setString(4, ROL_USU);
+                ps.setString(5, NOM_USU);
+                ps.setString(6, APE_USU);
+                ps.setString(7, DIR_X);
+                ps.setString(8, DIR_Y);
+                ps.setString(9, DIR_USU_NORMAL);
+                int n = ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Datos guardados correctamente");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +90,151 @@ public class CrearNatural extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jtxtCedula = new javax.swing.JTextField();
+        jtxtNombre = new javax.swing.JTextField();
+        jtxtApellido = new javax.swing.JTextField();
+        jtxtDireccion = new javax.swing.JTextField();
+        jtxtDireccionX = new javax.swing.JTextField();
+        jtxtDireccionY = new javax.swing.JTextField();
+        jpwdContrasenia = new javax.swing.JPasswordField();
+        jtxtRol = new javax.swing.JTextField();
+        jbtnGuardar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Cédula:");
+
+        jLabel2.setText("Nombre:");
+
+        jLabel3.setText("Apellido:");
+
+        jLabel4.setText("Dirección:");
+
+        jLabel5.setText("Dirección x:");
+
+        jLabel6.setText("Dirección y:");
+
+        jLabel7.setText("Contraseña:");
+
+        jLabel8.setText("Rol:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtxtCedula)
+                            .addComponent(jtxtNombre)
+                            .addComponent(jtxtApellido)
+                            .addComponent(jtxtDireccion)
+                            .addComponent(jtxtDireccionX)
+                            .addComponent(jtxtDireccionY, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpwdContrasenia)
+                            .addComponent(jtxtRol))))
+                .addContainerGap(140, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jtxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jtxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
+                    .addComponent(jtxtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtxtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtxtDireccionX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jtxtDireccionY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jpwdContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jtxtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        jbtnGuardar.setText("Guardar");
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(jbtnGuardar)))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jbtnGuardar)
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
+        guardar();
+    }//GEN-LAST:event_jbtnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +272,23 @@ public class CrearNatural extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbtnGuardar;
+    private javax.swing.JPasswordField jpwdContrasenia;
+    private javax.swing.JTextField jtxtApellido;
+    private javax.swing.JTextField jtxtCedula;
+    private javax.swing.JTextField jtxtDireccion;
+    private javax.swing.JTextField jtxtDireccionX;
+    private javax.swing.JTextField jtxtDireccionY;
+    private javax.swing.JTextField jtxtNombre;
+    private javax.swing.JTextField jtxtRol;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,4 +28,8 @@ public class ConnectionDB {
         }
         return conn;
     }
+
+    public Connection conn() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
