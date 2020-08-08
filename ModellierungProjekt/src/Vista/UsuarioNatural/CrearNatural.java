@@ -52,7 +52,7 @@ public class CrearNatural extends javax.swing.JFrame {
         } else {
             try {
                 ConnectionDB cc = new ConnectionDB();
-                Connection cn = cc.conn();
+                Connection cn = cc.getConnection();
                 String CED_USU, CONT_USU, ROL_USU, NOM_USU, APE_USU, DIR_X, DIR_Y, DIR_USU_NORMAL;
                 String sql = "";
                 CED_USU = jtxtCedula.getText();
