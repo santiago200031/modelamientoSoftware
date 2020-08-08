@@ -31,6 +31,8 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jpmSugerenciaNombre = new javax.swing.JPopupMenu();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jbtnReservar = new javax.swing.JButton();
@@ -55,6 +57,13 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                 jpmSugerenciaNombreMouseClicked(evt);
             }
         });
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(NaturalVentanaPrincipal.USUARIO_NATURAL);
@@ -94,6 +103,9 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
 
         jtxtNombreProducto.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jtxtNombreProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtxtNombreProductoKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxtNombreProductoKeyTyped(evt);
             }
@@ -108,6 +120,11 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
         jLabel6.setText("NOMBRE DEL PROD.:");
 
         jtxtCodigoProducto.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jtxtCodigoProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtxtCodigoProductoKeyReleased(evt);
+            }
+        });
 
         jbtnAgregar.setText("Agregar");
         jbtnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -137,23 +154,23 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(137, 137, 137))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(62, 62, 62)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jtxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addGap(62, 62, 62)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jbtnReservar))
+                                .addComponent(jlblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbtnReservar)))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel7)
                                 .addComponent(jLabel8))
                             .addGap(28, 28, 28)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtxtCodigoProducto)
-                                .addComponent(jtxtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxtCodigoProducto)
+                                    .addComponent(jtxtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(39, 39, 39))
         );
         jPanel2Layout.setVerticalGroup(
@@ -247,6 +264,14 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
         //Controlador.Natural.NaturalVentanaPrincipal.busquedaProductoNombre(jtxtNombreProducto.getText(), jpmSugerenciaNombre, this);
     }//GEN-LAST:event_jtxtNombreProductoKeyTyped
 
+    private void jtxtNombreProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreProductoKeyReleased
+        Controlador.Natural.NaturalVentanaPrincipal.busquedaAproximadaNombre(jtxtNombreProducto.getText());
+    }//GEN-LAST:event_jtxtNombreProductoKeyReleased
+
+    private void jtxtCodigoProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtCodigoProductoKeyReleased
+        Controlador.Natural.NaturalVentanaPrincipal.busquedaAproximadaCodigo(jtxtCodigoProducto.getText());
+    }//GEN-LAST:event_jtxtCodigoProductoKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -287,10 +312,12 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbtnAgregar;
     private javax.swing.JButton jbtnReservar;
     private javax.swing.JLabel jlblTotal;
