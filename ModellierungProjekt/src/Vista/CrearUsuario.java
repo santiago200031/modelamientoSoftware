@@ -40,7 +40,7 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
-        jbtnAfiliado.setText("Promocionar mis productos");
+        jbtnAfiliado.setText("Registrarse como afiliado");
         jbtnAfiliado.setMaximumSize(new java.awt.Dimension(120, 28));
         jbtnAfiliado.setMinimumSize(new java.awt.Dimension(120, 28));
         jbtnAfiliado.setPreferredSize(new java.awt.Dimension(120, 28));
@@ -50,7 +50,7 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
-        jbtnNatural.setText("Buscar productos");
+        jbtnNatural.setText("Registrarse como cliente");
         jbtnNatural.setPreferredSize(new java.awt.Dimension(120, 28));
         jbtnNatural.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -20,6 +20,16 @@ import javax.swing.JOptionPane;
  */
 public class CrearAfiliado {
 
+    public static void limpiar() {
+        jtxtCedula.setText("");
+        jpwdContrasenia.setText("");
+        jcbxRol.setSelectedIndex(0);
+        jtxtNombre.setText("");
+        jtxtApellido.setText("");
+        jtxtDireccionX.setText("");
+        jtxtDireccionY.setText("");
+        jtxtDireccion.setText("");
+    }
     public static void guardar() {
         if (jtxtCedula.getText().isEmpty() || jtxtCedula.getText().equals("0000000000")) {
             JOptionPane.showMessageDialog(null, "INGRESAR CÉDULA");
@@ -81,10 +91,10 @@ public class CrearAfiliado {
                 int n = ps.executeUpdate();
                 if (n > 0) {
                     JOptionPane.showMessageDialog(null, "Datos guardados correctamente");
-                    //limpiar();
+                    limpiar();
                 } else {
                     JOptionPane.showMessageDialog(null, "¡ERROR! Datos no guardados");
-                    //limpiar();
+                    limpiar();
                 }
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e);

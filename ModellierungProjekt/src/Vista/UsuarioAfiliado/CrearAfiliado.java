@@ -57,6 +57,11 @@ public class CrearAfiliado extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
         jbtnGuardar.setText("Guardar");
+        jbtnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbtnGuardarMouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Cancelar");
 
@@ -132,7 +137,7 @@ public class CrearAfiliado extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 153));
 
         jtxtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -309,7 +314,7 @@ public class CrearAfiliado extends javax.swing.JFrame {
 
     private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreKeyTyped
         char c = evt.getKeyChar();
-        int nCaracteres = 15;
+        int nCaracteres = 10;
         if (jtxtNombre.getText().length() >= nCaracteres) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "No se permite más caracteres");
@@ -338,7 +343,7 @@ public class CrearAfiliado extends javax.swing.JFrame {
 
     private void jtxtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtApellidoKeyTyped
         char c = evt.getKeyChar();
-        int nCaracteres = 15;
+        int nCaracteres = 10;
         if (jtxtApellido.getText().length() >= nCaracteres) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "No se permite más caracteres");
@@ -367,7 +372,7 @@ public class CrearAfiliado extends javax.swing.JFrame {
 
     private void jtxtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtDireccionKeyTyped
         char c = evt.getKeyChar();
-        int nCaracteres = 20;
+        int nCaracteres = 10;
         if (jtxtDireccion.getText().length() >= nCaracteres) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "No se permite más caracteres");
@@ -388,6 +393,10 @@ public class CrearAfiliado extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jtxtDireccionKeyTyped
+
+    private void jbtnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnGuardarMouseClicked
+        Controlador.Afiliado.CrearAfiliado.guardar();
+    }//GEN-LAST:event_jbtnGuardarMouseClicked
 
     /**
      * @param args the command line arguments

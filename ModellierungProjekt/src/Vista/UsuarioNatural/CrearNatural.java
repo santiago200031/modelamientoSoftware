@@ -44,9 +44,9 @@ public class CrearNatural extends javax.swing.JFrame {
         jtxtDireccionX = new javax.swing.JTextField();
         jtxtDireccionY = new javax.swing.JTextField();
         jpwdContrasenia = new javax.swing.JPasswordField();
-        jtxtRol = new javax.swing.JTextField();
         jbtnGuardar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jcbxRol = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +114,8 @@ public class CrearNatural extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel9.setText("REGISTRO CLIENTE");
 
+        jcbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "CLIENTE" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,7 +152,7 @@ public class CrearNatural extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jpwdContrasenia)
-                                    .addComponent(jtxtRol)))))
+                                    .addComponent(jcbxRol, 0, 119, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(jLabel9)))
@@ -192,9 +194,9 @@ public class CrearNatural extends javax.swing.JFrame {
                     .addComponent(jpwdContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                    .addComponent(jLabel8)
+                    .addComponent(jcbxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jbtnGuardar)
                 .addContainerGap())
         );
@@ -219,7 +221,7 @@ public class CrearNatural extends javax.swing.JFrame {
 
     private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreKeyTyped
         char c = evt.getKeyChar();
-        int nCaracteres = 15;
+        int nCaracteres = 10;
         if (jtxtNombre.getText().length() >= nCaracteres) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "No se permite más caracteres");
@@ -248,7 +250,7 @@ public class CrearNatural extends javax.swing.JFrame {
 
     private void jtxtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtApellidoKeyTyped
         char c = evt.getKeyChar();
-        int nCaracteres = 15;
+        int nCaracteres = 10;
         if (jtxtApellido.getText().length() >= nCaracteres) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "No se permite más caracteres");
@@ -322,7 +324,7 @@ public class CrearNatural extends javax.swing.JFrame {
 
     private void jtxtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtDireccionKeyTyped
         char c = evt.getKeyChar();
-        int nCaracteres = 20;
+        int nCaracteres = 10;
         if (jtxtDireccion.getText().length() >= nCaracteres) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "No se permite más caracteres");
@@ -391,6 +393,7 @@ public class CrearNatural extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtnGuardar;
+    public static javax.swing.JComboBox<String> jcbxRol;
     public static javax.swing.JPasswordField jpwdContrasenia;
     public static javax.swing.JTextField jtxtApellido;
     public static javax.swing.JTextField jtxtCedula;
@@ -398,6 +401,5 @@ public class CrearNatural extends javax.swing.JFrame {
     public static javax.swing.JTextField jtxtDireccionX;
     public static javax.swing.JTextField jtxtDireccionY;
     public static javax.swing.JTextField jtxtNombre;
-    public static javax.swing.JTextField jtxtRol;
     // End of variables declaration//GEN-END:variables
 }

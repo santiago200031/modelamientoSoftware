@@ -8,7 +8,7 @@ import static Vista.UsuarioNatural.CrearNatural.jtxtCedula;
 import static Vista.UsuarioNatural.CrearNatural.jtxtDireccion;
 import static Vista.UsuarioNatural.CrearNatural.jtxtDireccionX;
 import static Vista.UsuarioNatural.CrearNatural.jtxtDireccionY;
-import static Vista.UsuarioNatural.CrearNatural.jtxtRol;
+import static Vista.UsuarioNatural.CrearNatural.jcbxRol;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,7 +23,7 @@ public class CrearNatural {
     public static void limpiar() {
         jtxtCedula.setText("");
         jpwdContrasenia.setText("");
-        jtxtRol.setText("");
+        jcbxRol.setSelectedIndex(0);
         jtxtNombre.setText("");
         jtxtApellido.setText("");
         jtxtDireccionX.setText("");
@@ -53,9 +53,9 @@ public class CrearNatural {
         } else if (jtxtDireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
             jtxtDireccion.requestFocus();
-        } else if (jtxtRol.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR Rol");
-            jtxtRol.requestFocus();
+        } else if (jcbxRol.getSelectedItem().equals("Seleccione")) {
+            JOptionPane.showMessageDialog(null, "SELECCIONAR ROL");
+            jcbxRol.requestFocus();
         } else {
             try {
                 ConnectionDB cc = new ConnectionDB();
@@ -64,7 +64,7 @@ public class CrearNatural {
                 String sql = "";
                 CED_USU = jtxtCedula.getText();
                 CONT_USU = String.valueOf(jpwdContrasenia.getPassword());
-                ROL_USU = jtxtRol.getText();
+                ROL_USU = jcbxRol.getSelectedItem().toString();
                 NOM_USU = jtxtNombre.getText();
                 APE_USU = jtxtApellido.getText();
                 DIR_X = jtxtDireccionX.getText();

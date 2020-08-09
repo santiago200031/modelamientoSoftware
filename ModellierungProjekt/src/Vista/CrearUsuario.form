@@ -96,7 +96,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbtnAfiliado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Promocionar mis productos"/>
+        <Property name="text" type="java.lang.String" value="Registrarse como afiliado"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[120, 28]"/>
         </Property>
@@ -116,7 +116,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbtnNatural">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar productos"/>
+        <Property name="text" type="java.lang.String" value="Registrarse como cliente"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[120, 28]"/>
         </Property>
