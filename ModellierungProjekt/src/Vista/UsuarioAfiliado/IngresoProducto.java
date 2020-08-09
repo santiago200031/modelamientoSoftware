@@ -54,8 +54,6 @@ public class IngresoProducto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 153));
 
-        jPanel3.setBackground(new java.awt.Color(0, 102, 153));
-
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel1.setText("Id.:");
 
