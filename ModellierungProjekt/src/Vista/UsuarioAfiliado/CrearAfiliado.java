@@ -54,8 +54,6 @@ public class CrearAfiliado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 153));
-
         jbtnGuardar.setText("Guardar");
         jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,8 +65,6 @@ public class CrearAfiliado extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel9.setText("REGISTRO AFILIADO");
-
-        jPanel2.setBackground(new java.awt.Color(0, 102, 153));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel1.setText("Cédula:");
@@ -136,8 +132,6 @@ public class CrearAfiliado extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 153));
 
         jtxtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
