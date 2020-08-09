@@ -5,18 +5,110 @@
  */
 package Vista;
 
+import Controlador.ConnectionDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Marlon 1
  */
 public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
 
+    String cedulaUsuario = "";
+    private String cont = "";
+
     /**
      * Creates new form InterfazEditarAfiliado
      */
-    public InterfazEditarAfiliado() {
+    public InterfazEditarAfiliado() throws SQLException {
         initComponents();
         jpanelCambiarCon.setVisible(false);
+         
+        cargarDatos();
+    }
+
+   
+
+    public void cargarDatos() throws SQLException {
+        ConnectionDB cn = new ConnectionDB();
+        Connection cc = cn.getConnection();
+        String datos[] = new String[4];
+        String sql = "";
+        sql = "select *from usuarios where CED_USU='" + cedulaUsuario + "'";
+        Statement psd = cc.createStatement();
+        ResultSet rs = psd.executeQuery(sql);
+        while (rs.next()) {
+            datos[0] = rs.getString("CED_USU");
+            datos[1] = rs.getString("NOM_USU");
+            datos[2] = rs.getString("APE_USU");
+            datos[3] = rs.getString("CONT_USU");
+
+        }
+        jtxtCedula.setText(datos[0]);
+        jtxtNombre.setText(datos[1]);
+        jtxtApellido.setText(datos[2]);
+        jtxtCedula.setEditable(false);
+        jtxtNombre.setEditable(false);
+        jtxtApellido.setEditable(false);
+       // cont = getSHA1(datos[3]);
+
+    }
+
+    public boolean Guardar() {
+        if (jtxtConN.getText().isEmpty()) {
+            jtxtConN.requestFocus();
+        } else if (jtxtConC.getText().isEmpty()) {
+            jtxtConC.requestFocus();
+        } else {
+            String contraNueva = jtxtConN.getText();
+            String contraConfi = jtxtConC.getText();
+            if (contraNueva.equals(contraConfi)) {
+                ConnectionDB cn = new ConnectionDB();
+                Connection cc = cn.getConnection();
+                String sql = "";
+                sql = "UPDATE set CONT_USU='+" + contraConfi + "' where CED_USU='" + cedulaUsuario + "'";
+                int condicion = JOptionPane.showConfirmDialog(this, "Seguro que desea cambiar la contraseña", "Actualizar", JOptionPane.YES_NO_CANCEL_OPTION);
+                if (condicion > 0) {
+                    PreparedStatement psd;
+                    try {
+                        psd = cc.prepareStatement(sql);
+                        int com = psd.executeUpdate();
+                        if (com > 0) {
+                            JOptionPane.showMessageDialog(null, "Actualizado");
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(InterfazEditarAfiliado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
+            }
+        }
+
+        return false;
+    }
+
+    public static String getSHA1(String contrasenia) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA1");
+            byte[] array = md.digest(contrasenia.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     /**
@@ -29,8 +121,8 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jtxtNombre = new javax.swing.JTextField();
+        jtxtApellido = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -38,14 +130,14 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        jtxtConA = new javax.swing.JTextField();
+        jbtnG = new javax.swing.JButton();
+        jtxtConN = new javax.swing.JTextField();
+        jtxtConC = new javax.swing.JTextField();
+        jbtnCC = new javax.swing.JButton();
+        jtxtCedula = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("PERFIL");
 
@@ -61,7 +153,18 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
 
         jLabel7.setText("CONFIRMAR CONTRASEÑA  :");
 
-        jButton2.setText("GUARDAR");
+        jtxtConA.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtConAFocusLost(evt);
+            }
+        });
+
+        jbtnG.setText("GUARDAR");
+        jbtnG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpanelCambiarConLayout = new javax.swing.GroupLayout(jpanelCambiarCon);
         jpanelCambiarCon.setLayout(jpanelCambiarConLayout);
@@ -82,12 +185,12 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
                         .addComponent(jLabel7)
                         .addGap(48, 48, 48)
                         .addGroup(jpanelCambiarConLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5)))
+                            .addComponent(jtxtConA, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(jtxtConN)
+                            .addComponent(jtxtConC)))
                     .addGroup(jpanelCambiarConLayout.createSequentialGroup()
                         .addGap(129, 129, 129)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbtnG, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpanelCambiarConLayout.setVerticalGroup(
@@ -96,24 +199,24 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpanelCambiarConLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtConA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jpanelCambiarConLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtConN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpanelCambiarConLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtConC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jbtnG)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jButton1.setText("CAMBIAR  CONTRASEÑA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnCC.setText("CAMBIAR  CONTRASEÑA");
+        jbtnCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtnCCActionPerformed(evt);
             }
         });
 
@@ -137,12 +240,12 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                                    .addComponent(jTextField6)))))
+                                    .addComponent(jtxtNombre)
+                                    .addComponent(jtxtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                                    .addComponent(jtxtCedula)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
-                        .addComponent(jButton1)))
+                        .addComponent(jbtnCC)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -153,17 +256,17 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addComponent(jButton1)
+                .addComponent(jbtnCC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpanelCambiarCon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -172,9 +275,29 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      jpanelCambiarCon.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbtnCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCCActionPerformed
+
+        jpanelCambiarCon.setVisible(true);
+        jtxtConN.setEnabled(false);
+        jtxtConC.setEnabled(false);
+        jbtnG.setEnabled(false);
+    }//GEN-LAST:event_jbtnCCActionPerformed
+
+    private void jbtnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGActionPerformed
+        Guardar();
+    }//GEN-LAST:event_jbtnGActionPerformed
+
+    private void jtxtConAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtConAFocusLost
+        String contraActual = jtxtConA.getText();
+        if (contraActual.equals(cont)) {
+            jtxtConN.setEnabled(true);
+            jtxtConC.setEnabled(true);
+            jbtnG.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "La contraseña es incorrecta");
+        }
+
+    }//GEN-LAST:event_jtxtConAFocusLost
 
     /**
      * @param args the command line arguments
@@ -206,14 +329,16 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazEditarAfiliado().setVisible(true);
+                try {
+                    new InterfazEditarAfiliado().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(InterfazEditarAfiliado.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -221,12 +346,14 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JButton jbtnCC;
+    private javax.swing.JButton jbtnG;
     private javax.swing.JPanel jpanelCambiarCon;
+    private javax.swing.JTextField jtxtApellido;
+    private javax.swing.JTextField jtxtCedula;
+    private javax.swing.JTextField jtxtConA;
+    private javax.swing.JTextField jtxtConC;
+    private javax.swing.JTextField jtxtConN;
+    private javax.swing.JTextField jtxtNombre;
     // End of variables declaration//GEN-END:variables
 }

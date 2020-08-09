@@ -5,18 +5,24 @@
  */
 package Vista;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Marlon 1
  */
 public class InterfazDatosAfiliado extends javax.swing.JFrame {
-
+public String cedulaUsu="";
     /**
      * Creates new form InterfazDatosAfiliado
      */
     public InterfazDatosAfiliado() {
         initComponents();
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,10 +114,17 @@ public class InterfazDatosAfiliado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      InterfazEditarAfiliado vieweditarAfiliado = new InterfazEditarAfiliado();
-       vieweditarAfiliado.setSize(jdp.getWidth(),jdp.getHeight());
+      InterfazEditarAfiliado vieweditarAfiliado;
+    try {
+        vieweditarAfiliado = new InterfazEditarAfiliado();
+        vieweditarAfiliado.cedulaUsuario=cedulaUsu;
+        vieweditarAfiliado.setSize(jdp.getWidth(),jdp.getHeight());
       jdp.add(vieweditarAfiliado);
       vieweditarAfiliado.show();
+    } catch (SQLException ex) {
+        Logger.getLogger(InterfazDatosAfiliado.class.getName()).log(Level.SEVERE, null, ex);
+    }
+       
       
       
     }//GEN-LAST:event_jButton1ActionPerformed

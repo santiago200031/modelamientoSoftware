@@ -3,6 +3,7 @@ package Controlador;
 import Vista.UsuarioAfiliado.AfiliadoVentanaPrincipal;
 import Vista.UsuarioNatural.NaturalVentanaPrincipal;
 import Vista.CrearUsuario;
+import Vista.InterfazDatosAfiliado;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -48,8 +49,14 @@ public class Login {
                         new NaturalVentanaPrincipal().setVisible(true);
                         break;
                     case "AFILIADO":
+                        
+                        InterfazDatosAfiliado afiliado = new InterfazDatosAfiliado();
+                        afiliado.
+                        afiliado.show();
+                        /*
                         Controlador.Afiliado.AfiliadoVentanaPrincipal.USUARIO_AFILIADO = cedula;
                         new AfiliadoVentanaPrincipal().setVisible(true);
+                        */
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "No se determinó el rol/tipo del usuario.");
