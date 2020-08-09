@@ -12,13 +12,14 @@ import static Vista.UsuarioAfiliado.IngresoProducto.jtxtMarca;
 import static Vista.UsuarioAfiliado.IngresoProducto.jtxtNombre;
 import static Vista.UsuarioAfiliado.IngresoProducto.jtxtPrecio;
 import static Vista.UsuarioAfiliado.IngresoProducto.jtxtRUC;
-import static Vista.UsuarioAfiliado.IngresoProducto.jtxtVencimiento;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import static Vista.UsuarioAfiliado.IngresoProducto.jcbxDia;
+import static Vista.UsuarioAfiliado.IngresoProducto.jcbxMes;
+import static Vista.UsuarioAfiliado.IngresoProducto.jtxtAnio;
 
 /**
  *
@@ -32,7 +33,9 @@ public class IngresoProducto {
         jtxtMarca.setText("");
         jtxtPrecio.setText("");
         jtxtCantidad.setText("");
-        jtxtVencimiento.setText("");
+        jcbxDia.setSelectedIndex(0);
+        jtxtAnio.setText("");
+        jcbxMes.setSelectedIndex(0);
         jtxtRUC.setText("");
     }
 
@@ -47,8 +50,8 @@ public class IngresoProducto {
             JOptionPane.showMessageDialog(null, "INGRESAR PRECIO DE PRODUCTO");
         } else if (jtxtCantidad.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "INGRESAR CANTIDAD");
-        } else if (jtxtVencimiento.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
+        } else if (jtxtAnio.getText().isEmpty() || jcbxMes.getSelectedItem().equals("Mes") || jcbxDia.getSelectedItem().equals("Día")) {
+            JOptionPane.showMessageDialog(null, "INGRESAR FECHA DE VENCIMIENTO");
         } else if (jtxtRUC.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "INGRESAR RUC DEL NEGOCIO AL QUE PERTENECE");
         } else {
@@ -62,7 +65,7 @@ public class IngresoProducto {
                 MAR_PRO = jtxtMarca.getText();
                 PRE_PRO = jtxtPrecio.getText();
                 CAN_PRO = jtxtCantidad.getText();
-                //Date.valueOf(jtxtVencimiento.getText());
+                FEC_VEN_PRO = (jtxtAnio.getText() + "-" + jcbxMes.getSelectedItem().toString() + "-" + jcbxDia.getSelectedItem().toString());
                 RUC_NEG_PER = jtxtRUC.getText();
                 sql = "insert into productos(ID_PRO, NOM_PRO, MAR_PRO, PRE_PRO, CAN_PRO, FEC_VEN_PRO, RUC_NEG_PER) values(?,?,?,?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(sql);
@@ -71,7 +74,7 @@ public class IngresoProducto {
                 ps.setString(3, MAR_PRO);
                 ps.setString(4, PRE_PRO);
                 ps.setString(5, CAN_PRO);
-                ps.setDate(6, Date.valueOf(jtxtVencimiento.getText()));
+                ps.setString(6, FEC_VEN_PRO);
                 ps.setString(7, RUC_NEG_PER);
                 int n = ps.executeUpdate();
                 if (n > 0) {
@@ -87,8 +90,8 @@ public class IngresoProducto {
             }
         }
     }
-    
-    public static void numeros(KeyEvent evt){
+
+    public static void numeros(KeyEvent evt) {
         int nCaracteres = 10;
         if (jtxtID.getText().length() >= nCaracteres) {
             evt.consume();
@@ -102,28 +105,42 @@ public class IngresoProducto {
             JOptionPane.showMessageDialog(null, "Ingrese solo números");
         }
     }
-    
-    public static void fecha(KeyEvent evt){
-        int nCaracteres = 10;
-        if (jtxtVencimiento.getText().length() >= nCaracteres) {
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Este campo cuenta con 10 caracteres");
-        }
 
+    public static void Anio(KeyEvent evt) {
+        int nAnio = 4;
+        if (jtxtAnio.getText().length() >= nAnio) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Este campo cuenta con 04 caracteres");
+        }
         char c;
         c = evt.getKeyChar();
+        if ((c < '0') || (c > '9')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        }
+    }
+
+    public static void MarNom(KeyEvent evt) {
+       char c = evt.getKeyChar();
+        int nCaracteres = 15;
+        if (jtxtMarca.getText().length() >= nCaracteres) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "No se permite más caracteres");
+        }
+
         if (Character.isLowerCase(c)) {
             String s = ("" + c).toUpperCase();
             c = s.charAt(0);
             evt.setKeyChar(c);
         }
-            evt.setKeyChar(c);
-        if ((int) evt.getKeyChar() >= 0 && (int) evt.getKeyChar() <= 44
+        if ((int) evt.getKeyChar() > 31 && (int) evt.getKeyChar() <= 44
                 || (int) evt.getKeyChar() >= 46 && (int) evt.getKeyChar() <= 47
-                || (int) evt.getKeyChar() >= 58 && (int) evt.getKeyChar() <= 255) {
+                || (int) evt.getKeyChar() >= 58 && (int) evt.getKeyChar() <= 64
+                || (int) evt.getKeyChar() >= 91 && (int) evt.getKeyChar() <= 96
+                || (int) evt.getKeyChar() >= 123 && (int) evt.getKeyChar() <= 255) {
             evt.consume();
-            JOptionPane.showMessageDialog(null, "Ingrese fecha de vencimiento en formato: YYYY-MM-DD");
+            //this.setCursor(null);
+
         }
     }
-    
 }

@@ -1,6 +1,7 @@
 package Controlador.Natural;
 
 import Controlador.ConnectionDB;
+import Vista.Login;
 import static Vista.UsuarioNatural.CrearNatural.jpwdContrasenia;
 import static Vista.UsuarioNatural.CrearNatural.jtxtNombre;
 import static Vista.UsuarioNatural.CrearNatural.jtxtApellido;
@@ -102,5 +103,8 @@ public class CrearNatural {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
+    }
+    public static void abrirLogin() {
+        new Login().setVisible(true);
     }
 }

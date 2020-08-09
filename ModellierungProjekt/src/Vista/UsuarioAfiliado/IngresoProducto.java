@@ -18,6 +18,7 @@ public class IngresoProducto extends javax.swing.JFrame {
      */
     public IngresoProducto() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     
@@ -46,10 +47,14 @@ public class IngresoProducto extends javax.swing.JFrame {
         jtxtPrecio = new javax.swing.JTextField();
         jtxtCantidad = new javax.swing.JTextField();
         jtxtRUC = new javax.swing.JTextField();
-        jtxtVencimiento = new javax.swing.JFormattedTextField();
-        jbtnGuardar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jcbxDia = new javax.swing.JComboBox<>();
+        jcbxMes = new javax.swing.JComboBox<>();
+        jtxtAnio = new javax.swing.JTextField();
         jbtnCancelar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jbtnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 153));
@@ -152,9 +157,17 @@ public class IngresoProducto extends javax.swing.JFrame {
             }
         });
 
-        jtxtVencimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+        jLabel9.setText("-");
+
+        jLabel10.setText("-");
+
+        jcbxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Día", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "29", "29", "30", "31" }));
+
+        jcbxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+
+        jtxtAnio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtxtVencimientoKeyTyped(evt);
+                jtxtAnioKeyTyped(evt);
             }
         });
 
@@ -162,17 +175,26 @@ public class IngresoProducto extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtxtID, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                    .addComponent(jtxtNombre)
-                    .addComponent(jtxtMarca)
-                    .addComponent(jtxtPrecio)
-                    .addComponent(jtxtCantidad)
-                    .addComponent(jtxtRUC)
-                    .addComponent(jtxtVencimiento))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jtxtAnio, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcbxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcbxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtID)
+                    .addComponent(jtxtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtMarca, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtPrecio, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtRUC, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtCantidad, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(16, 16, 16))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,18 +210,16 @@ public class IngresoProducto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtxtVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jcbxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addComponent(jtxtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jbtnGuardar.setText("Guardar");
-        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnGuardarActionPerformed(evt);
-            }
-        });
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -208,8 +228,16 @@ public class IngresoProducto extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 102, 102));
         jLabel8.setText("REGISTRO DE PRODUCTO");
+
+        jbtnGuardar.setText("Guardar");
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -229,9 +257,9 @@ public class IngresoProducto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(39, 39, 39)
                         .addComponent(jLabel8)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,8 +272,8 @@ public class IngresoProducto extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnGuardar)
-                    .addComponent(jbtnCancelar))
+                    .addComponent(jbtnCancelar)
+                    .addComponent(jbtnGuardar))
                 .addGap(25, 25, 25))
         );
 
@@ -271,10 +299,6 @@ public class IngresoProducto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jbtnCancelarActionPerformed
 
-    private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
-        Controlador.Afiliado.IngresoProducto.guardarPro();
-    }//GEN-LAST:event_jbtnGuardarActionPerformed
-
     private void jtxtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtPrecioKeyTyped
         Controlador.Afiliado.IngresoProducto.numeros(evt);
     }//GEN-LAST:event_jtxtPrecioKeyTyped
@@ -283,56 +307,12 @@ public class IngresoProducto extends javax.swing.JFrame {
         Controlador.Afiliado.IngresoProducto.numeros(evt);
     }//GEN-LAST:event_jtxtCantidadKeyTyped
 
-    private void jtxtVencimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtVencimientoKeyTyped
-        Controlador.Afiliado.IngresoProducto.fecha(evt);
-    }//GEN-LAST:event_jtxtVencimientoKeyTyped
-
     private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreKeyTyped
-        char c = evt.getKeyChar();
-        int nCaracteres = 15;
-        if (jtxtNombre.getText().length() >= nCaracteres) {
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "No se permite más caracteres");
-        }
-
-        if (Character.isLowerCase(c)) {
-            String s = ("" + c).toUpperCase();
-            c = s.charAt(0);
-            evt.setKeyChar(c);
-        }
-        if ((int) evt.getKeyChar() > 31 && (int) evt.getKeyChar() <= 44
-                || (int) evt.getKeyChar() >= 46 && (int) evt.getKeyChar() <= 47
-                || (int) evt.getKeyChar() >= 58 && (int) evt.getKeyChar() <= 64
-                || (int) evt.getKeyChar() >= 91 && (int) evt.getKeyChar() <= 96
-                || (int) evt.getKeyChar() >= 123 && (int) evt.getKeyChar() <= 255) {
-            evt.consume();
-            this.setCursor(null);
-
-        }
+        Controlador.Afiliado.IngresoProducto.MarNom(evt);
     }//GEN-LAST:event_jtxtNombreKeyTyped
 
     private void jtxtMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtMarcaKeyTyped
-        char c = evt.getKeyChar();
-        int nCaracteres = 15;
-        if (jtxtMarca.getText().length() >= nCaracteres) {
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "No se permite más caracteres");
-        }
-
-        if (Character.isLowerCase(c)) {
-            String s = ("" + c).toUpperCase();
-            c = s.charAt(0);
-            evt.setKeyChar(c);
-        }
-        if ((int) evt.getKeyChar() > 31 && (int) evt.getKeyChar() <= 44
-                || (int) evt.getKeyChar() >= 46 && (int) evt.getKeyChar() <= 47
-                || (int) evt.getKeyChar() >= 58 && (int) evt.getKeyChar() <= 64
-                || (int) evt.getKeyChar() >= 91 && (int) evt.getKeyChar() <= 96
-                || (int) evt.getKeyChar() >= 123 && (int) evt.getKeyChar() <= 255) {
-            evt.consume();
-            this.setCursor(null);
-
-        }
+        Controlador.Afiliado.IngresoProducto.MarNom(evt);
     }//GEN-LAST:event_jtxtMarcaKeyTyped
 
     private void jtxtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtIDKeyTyped
@@ -361,7 +341,16 @@ public class IngresoProducto extends javax.swing.JFrame {
 
     private void jtxtRUCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtRUCKeyTyped
         Controlador.Afiliado.IngresoProducto.numeros(evt);
+        
     }//GEN-LAST:event_jtxtRUCKeyTyped
+
+    private void jtxtAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtAnioKeyTyped
+        Controlador.Afiliado.IngresoProducto.Anio(evt);
+    }//GEN-LAST:event_jtxtAnioKeyTyped
+
+    private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
+        Controlador.Afiliado.IngresoProducto.guardarPro();
+    }//GEN-LAST:event_jbtnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,6 +389,7 @@ public class IngresoProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -407,17 +397,20 @@ public class IngresoProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton jbtnCancelar;
     private javax.swing.JButton jbtnGuardar;
+    public static javax.swing.JComboBox<String> jcbxDia;
+    public static javax.swing.JComboBox<String> jcbxMes;
+    public static javax.swing.JTextField jtxtAnio;
     public static javax.swing.JTextField jtxtCantidad;
     public static javax.swing.JTextField jtxtID;
     public static javax.swing.JTextField jtxtMarca;
     public static javax.swing.JTextField jtxtNombre;
     public static javax.swing.JTextField jtxtPrecio;
     public static javax.swing.JTextField jtxtRUC;
-    public static javax.swing.JFormattedTextField jtxtVencimiento;
     // End of variables declaration//GEN-END:variables
 }

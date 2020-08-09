@@ -51,7 +51,7 @@ public class CrearNegocio {
             JOptionPane.showMessageDialog(null, "La ciudad se encuentra vacía.");
             return false;
         }
-        String sql = "INSERT INTO NEGOCIOS (RUC_NEG, CED_USU_PER, CAT_NEG, NOM_NEG, DIR_NEG_NOR, DIR_X, DIR_Y, CIU_NEG, PRO_NEG) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO NEGOCIOS (RUC_NEG, CED_USU_PER, CAT_NEG, NOM_NEG, DIR_NEG_NOR, DIR_X, DIR_Y, CIU_NEG, PRO_NEG) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ruc);

@@ -1,6 +1,7 @@
 package Controlador.Afiliado;
 
 import Controlador.ConnectionDB;
+import Vista.Login;
 import static Vista.UsuarioAfiliado.CrearAfiliado.jcbxRol;
 import static Vista.UsuarioAfiliado.CrearAfiliado.jpwdContrasenia;
 import static Vista.UsuarioAfiliado.CrearAfiliado.jtxtApellido;
@@ -30,6 +31,7 @@ public class CrearAfiliado {
         jtxtDireccionY.setText("");
         jtxtDireccion.setText("");
     }
+
     public static void guardar() {
         if (jtxtCedula.getText().isEmpty() || jtxtCedula.getText().equals("0000000000")) {
             JOptionPane.showMessageDialog(null, "INGRESAR CÉDULA");
@@ -103,5 +105,8 @@ public class CrearAfiliado {
         }
     }
 
- 
+    public static void abrirLogin() {
+        new Login().setVisible(true);
+    }
+
 }
