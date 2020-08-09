@@ -57,9 +57,9 @@ public class CrearAfiliado extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
         jbtnGuardar.setText("Guardar");
-        jbtnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbtnGuardarMouseClicked(evt);
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
             }
         });
 
@@ -394,9 +394,9 @@ public class CrearAfiliado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtxtDireccionKeyTyped
 
-    private void jbtnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnGuardarMouseClicked
+    private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
         Controlador.Afiliado.CrearAfiliado.guardar();
-    }//GEN-LAST:event_jbtnGuardarMouseClicked
+    }//GEN-LAST:event_jbtnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
