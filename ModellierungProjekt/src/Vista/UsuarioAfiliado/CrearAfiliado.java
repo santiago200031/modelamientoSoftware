@@ -18,6 +18,7 @@ public class CrearAfiliado extends javax.swing.JFrame {
      */
     public CrearAfiliado() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,7 +32,7 @@ public class CrearAfiliado extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jbtnGuardar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -61,9 +62,15 @@ public class CrearAfiliado extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Cancelar");
+        jbtnCancelar.setText("Cancelar");
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 102, 102));
         jLabel9.setText("REGISTRO AFILIADO");
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -225,10 +232,10 @@ public class CrearAfiliado extends javax.swing.JFrame {
                         .addGap(218, 218, 218)
                         .addComponent(jbtnGuardar)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton3))
+                        .addComponent(jbtnCancelar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel9)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -243,7 +250,7 @@ public class CrearAfiliado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnGuardar)
-                    .addComponent(jButton3))
+                    .addComponent(jbtnCancelar))
                 .addContainerGap())
         );
 
@@ -390,7 +397,13 @@ public class CrearAfiliado extends javax.swing.JFrame {
 
     private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
         Controlador.Afiliado.CrearAfiliado.guardar();
+        Controlador.Natural.CrearNatural.abrirLogin();
+        this.dispose();
     }//GEN-LAST:event_jbtnGuardarActionPerformed
+
+    private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,7 +441,6 @@ public class CrearAfiliado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -441,6 +453,7 @@ public class CrearAfiliado extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton jbtnCancelar;
     private javax.swing.JButton jbtnGuardar;
     public static javax.swing.JComboBox<String> jcbxRol;
     public static javax.swing.JPasswordField jpwdContrasenia;

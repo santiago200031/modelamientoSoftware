@@ -50,18 +50,18 @@
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="90" max="32767" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,8 +77,8 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jbtnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbtnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbtnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
@@ -192,18 +192,28 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jtxtID" pref="82" max="32767" attributes="0"/>
-                          <Component id="jtxtNombre" max="32767" attributes="0"/>
-                          <Component id="jtxtMarca" max="32767" attributes="0"/>
-                          <Component id="jtxtPrecio" max="32767" attributes="0"/>
-                          <Component id="jtxtCantidad" max="32767" attributes="0"/>
-                          <Component id="jtxtRUC" max="32767" attributes="0"/>
-                          <Component id="jtxtVencimiento" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jtxtAnio" pref="43" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jcbxMes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Component id="jLabel10" min="-2" pref="12" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jcbxDia" min="-2" pref="59" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jtxtID" max="32767" attributes="0"/>
+                          <Component id="jtxtNombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtxtMarca" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtxtPrecio" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtxtRUC" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jtxtCantidad" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -221,7 +231,13 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jtxtCantidad" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jtxtVencimiento" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbxDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbxMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxtAnio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="jtxtRUC" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -279,9 +295,88 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jtxtVencimiento">
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="-"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="-"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcbxDia">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="32">
+                    <StringItem index="0" value="D&#xed;a"/>
+                    <StringItem index="1" value="01"/>
+                    <StringItem index="2" value="02"/>
+                    <StringItem index="3" value="03"/>
+                    <StringItem index="4" value="04"/>
+                    <StringItem index="5" value="05"/>
+                    <StringItem index="6" value="06"/>
+                    <StringItem index="7" value="07"/>
+                    <StringItem index="8" value="08"/>
+                    <StringItem index="9" value="09"/>
+                    <StringItem index="10" value="10"/>
+                    <StringItem index="11" value="11"/>
+                    <StringItem index="12" value="12"/>
+                    <StringItem index="13" value="13"/>
+                    <StringItem index="14" value="14"/>
+                    <StringItem index="15" value="15"/>
+                    <StringItem index="16" value="16"/>
+                    <StringItem index="17" value="17"/>
+                    <StringItem index="18" value="18"/>
+                    <StringItem index="19" value="19"/>
+                    <StringItem index="20" value="20"/>
+                    <StringItem index="21" value="21"/>
+                    <StringItem index="22" value="22"/>
+                    <StringItem index="23" value="23"/>
+                    <StringItem index="24" value="24"/>
+                    <StringItem index="25" value="25"/>
+                    <StringItem index="26" value="26"/>
+                    <StringItem index="27" value="27"/>
+                    <StringItem index="28" value="29"/>
+                    <StringItem index="29" value="29"/>
+                    <StringItem index="30" value="30"/>
+                    <StringItem index="31" value="31"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcbxMes">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="13">
+                    <StringItem index="0" value="Mes"/>
+                    <StringItem index="1" value="01"/>
+                    <StringItem index="2" value="02"/>
+                    <StringItem index="3" value="03"/>
+                    <StringItem index="4" value="04"/>
+                    <StringItem index="5" value="05"/>
+                    <StringItem index="6" value="06"/>
+                    <StringItem index="7" value="07"/>
+                    <StringItem index="8" value="08"/>
+                    <StringItem index="9" value="09"/>
+                    <StringItem index="10" value="10"/>
+                    <StringItem index="11" value="11"/>
+                    <StringItem index="12" value="12"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxtAnio">
               <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtVencimientoKeyTyped"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtAnioKeyTyped"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -289,14 +384,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jbtnGuardar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Guardar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnGuardarActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jbtnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
@@ -308,10 +395,21 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="24" style="0"/>
+              <Font name="Tahoma" size="36" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="REGISTRO DE PRODUCTO"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbtnGuardar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Guardar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnGuardarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
