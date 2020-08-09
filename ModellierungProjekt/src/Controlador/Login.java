@@ -51,7 +51,7 @@ public class Login {
                     case "AFILIADO":
                         
                         InterfazDatosAfiliado afiliado = new InterfazDatosAfiliado();
-                        afiliado.
+                        afiliado.cedulaUsu=cedula;
                         afiliado.show();
                         /*
                         Controlador.Afiliado.AfiliadoVentanaPrincipal.USUARIO_AFILIADO = cedula;
