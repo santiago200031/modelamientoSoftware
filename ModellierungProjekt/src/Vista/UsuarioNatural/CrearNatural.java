@@ -5,10 +5,6 @@
  */
 package Vista.UsuarioNatural;
 
-import Controlador.ConnectionDB;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,64 +19,6 @@ public class CrearNatural extends javax.swing.JFrame {
     public CrearNatural() {
         initComponents();
     }
-
-    public void guardar() {
-        if (jtxtCedula.getText().isEmpty() || jtxtCedula.getText().equals("0000000000")) {
-            JOptionPane.showMessageDialog(null, "INGRESAR CÉDULA");
-            jtxtCedula.requestFocus();
-        } else if (jtxtNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR  NOMBRE");
-            jtxtNombre.requestFocus();
-        } else if (jtxtApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR APELLIDO");
-            jtxtApellido.requestFocus();
-        } else if (jpwdContrasenia.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR CONTRASEÑA");
-            jpwdContrasenia.requestFocus();
-        } else if (jtxtDireccionX.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
-            jtxtDireccionX.requestFocus();
-        } else if (jtxtDireccionY.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
-            jtxtDireccionY.requestFocus();
-        } else if (jtxtDireccion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
-            jtxtDireccion.requestFocus();
-        } else if (jtxtRol.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "INGRESAR Rol");
-            jtxtRol.requestFocus();
-        } else {
-            try {
-                ConnectionDB cc = new ConnectionDB();
-                Connection cn = cc.getConnection();
-                String CED_USU, CONT_USU, ROL_USU, NOM_USU, APE_USU, DIR_X, DIR_Y, DIR_USU_NORMAL;
-                String sql = "";
-                CED_USU = jtxtCedula.getText();
-                CONT_USU = String.valueOf(jpwdContrasenia.getPassword());
-                ROL_USU = jtxtRol.getText();
-                NOM_USU = jtxtNombre.getText();
-                APE_USU = jtxtApellido.getText();
-                DIR_X = jtxtDireccionX.getText();
-                DIR_Y = jtxtDireccionY.getText();
-                DIR_USU_NORMAL = jtxtDireccion.getText();
-                sql = "INSERT INTO USUARIOS(CED_USU, CONT_USU, ROL_USU, NOM_USU, APE_USU, DIR_X, DIR_Y, DIR_USU_NORMAL)values(?,?,?,?,?,?,?,?)";
-                PreparedStatement ps = cn.prepareStatement(sql);
-                ps.setString(1, CED_USU);
-                ps.setString(3, CONT_USU);
-                ps.setString(4, ROL_USU);
-                ps.setString(5, NOM_USU);
-                ps.setString(6, APE_USU);
-                ps.setString(7, DIR_X);
-                ps.setString(8, DIR_Y);
-                ps.setString(9, DIR_USU_NORMAL);
-                int n = ps.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Datos guardados correctamente");
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,8 +46,11 @@ public class CrearNatural extends javax.swing.JFrame {
         jpwdContrasenia = new javax.swing.JPasswordField();
         jtxtRol = new javax.swing.JTextField();
         jbtnGuardar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
         jLabel1.setText("Cédula:");
 
@@ -127,43 +68,100 @@ public class CrearNatural extends javax.swing.JFrame {
 
         jLabel8.setText("Rol:");
 
+        jtxtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtCedulaKeyTyped(evt);
+            }
+        });
+
+        jtxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtNombreKeyTyped(evt);
+            }
+        });
+
+        jtxtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtApellidoKeyTyped(evt);
+            }
+        });
+
+        jtxtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtDireccionKeyTyped(evt);
+            }
+        });
+
+        jtxtDireccionX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtDireccionXKeyTyped(evt);
+            }
+        });
+
+        jtxtDireccionY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtDireccionYKeyTyped(evt);
+            }
+        });
+
+        jbtnGuardar.setText("Guardar");
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setText("REGISTRO CLIENTE");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtnGuardar)
+                .addGap(110, 110, 110))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(23, 23, 23)
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxtCedula)
-                            .addComponent(jtxtNombre)
-                            .addComponent(jtxtApellido)
-                            .addComponent(jtxtDireccion)
-                            .addComponent(jtxtDireccionX)
-                            .addComponent(jtxtDireccionY, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxtCedula)
+                                    .addComponent(jtxtNombre)
+                                    .addComponent(jtxtApellido)
+                                    .addComponent(jtxtDireccion)
+                                    .addComponent(jtxtDireccionX)
+                                    .addComponent(jtxtDireccionY, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jpwdContrasenia)
+                                    .addComponent(jtxtRol)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jpwdContrasenia)
-                            .addComponent(jtxtRol))))
-                .addContainerGap(140, Short.MAX_VALUE))
+                        .addGap(144, 144, 144)
+                        .addComponent(jLabel9)))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -192,49 +190,159 @@ public class CrearNatural extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jpwdContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jtxtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jtxtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(jbtnGuardar)
+                .addContainerGap())
         );
-
-        jbtnGuardar.setText("Guardar");
-        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnGuardarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(jbtnGuardar)))
-                .addContainerGap(338, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jbtnGuardar)
-                .addContainerGap(181, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
-        guardar();
+        Controlador.Natural.CrearNatural.guardar();
     }//GEN-LAST:event_jbtnGuardarActionPerformed
+
+    private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreKeyTyped
+        char c = evt.getKeyChar();
+        int nCaracteres = 15;
+        if (jtxtNombre.getText().length() >= nCaracteres) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "No se permite más caracteres");
+        }
+
+        if (Character.isDigit(c)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
+            this.setCursor(null);
+        } else if (Character.isLowerCase(c)) {
+            String s = ("" + c).toUpperCase();
+            c = s.charAt(0);
+            evt.setKeyChar(c);
+        }
+        if ((int) evt.getKeyChar() > 31 && (int) evt.getKeyChar() <= 47
+                || (int) evt.getKeyChar() >= 58 && (int) evt.getKeyChar() <= 64
+                || (int) evt.getKeyChar() >= 91 && (int) evt.getKeyChar() <= 96
+                || (int) evt.getKeyChar() >= 123 && (int) evt.getKeyChar() <= 255) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
+            this.setCursor(null);
+
+        }
+    }//GEN-LAST:event_jtxtNombreKeyTyped
+
+    private void jtxtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtApellidoKeyTyped
+        char c = evt.getKeyChar();
+        int nCaracteres = 15;
+        if (jtxtApellido.getText().length() >= nCaracteres) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "No se permite más caracteres");
+        }
+
+        if (Character.isDigit(c)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
+            this.setCursor(null);
+        } else if (Character.isLowerCase(c)) {
+            String s = ("" + c).toUpperCase();
+            c = s.charAt(0);
+            evt.setKeyChar(c);
+        }
+        if ((int) evt.getKeyChar() > 31 && (int) evt.getKeyChar() <= 47
+                || (int) evt.getKeyChar() >= 58 && (int) evt.getKeyChar() <= 64
+                || (int) evt.getKeyChar() >= 91 && (int) evt.getKeyChar() <= 96
+                || (int) evt.getKeyChar() >= 123 && (int) evt.getKeyChar() <= 255) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
+            this.setCursor(null);
+
+        }
+    }//GEN-LAST:event_jtxtApellidoKeyTyped
+
+    private void jtxtDireccionXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtDireccionXKeyTyped
+        int nCaracteres = 4;
+        if (jtxtDireccionX.getText().length() >= nCaracteres) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Este campo cuenta con un límite de 4 caracteres");
+        }
+
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0') || (c > '9')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        }
+    }//GEN-LAST:event_jtxtDireccionXKeyTyped
+
+    private void jtxtDireccionYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtDireccionYKeyTyped
+        int nCaracteres = 4;
+        if (jtxtDireccionY.getText().length() >= nCaracteres) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Este campo cuenta con un límite de 4 caracteres");
+        }
+
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0') || (c > '9')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        }
+    }//GEN-LAST:event_jtxtDireccionYKeyTyped
+
+    private void jtxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtCedulaKeyTyped
+        int nCaracteres = 10;
+        if (jtxtCedula.getText().length() >= nCaracteres) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Este campo cuenta con 10 caracteres");
+        }
+
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0') || (c > '9')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        }
+    }//GEN-LAST:event_jtxtCedulaKeyTyped
+
+    private void jtxtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtDireccionKeyTyped
+        char c = evt.getKeyChar();
+        int nCaracteres = 20;
+        if (jtxtDireccion.getText().length() >= nCaracteres) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "No se permite más caracteres");
+        }
+
+        if (Character.isLowerCase(c)) {
+            String s = ("" + c).toUpperCase();
+            c = s.charAt(0);
+            evt.setKeyChar(c);
+        }
+        if ((int) evt.getKeyChar() > 31 && (int) evt.getKeyChar() <= 44
+                || (int) evt.getKeyChar() >= 46 && (int) evt.getKeyChar() <= 47
+                || (int) evt.getKeyChar() >= 58 && (int) evt.getKeyChar() <= 64
+                || (int) evt.getKeyChar() >= 91 && (int) evt.getKeyChar() <= 96
+                || (int) evt.getKeyChar() >= 123 && (int) evt.getKeyChar() <= 255) {
+            evt.consume();
+            this.setCursor(null);
+
+        }
+    }//GEN-LAST:event_jtxtDireccionKeyTyped
 
     /**
      * @param args the command line arguments
@@ -280,15 +388,16 @@ public class CrearNatural extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtnGuardar;
-    private javax.swing.JPasswordField jpwdContrasenia;
-    private javax.swing.JTextField jtxtApellido;
-    private javax.swing.JTextField jtxtCedula;
-    private javax.swing.JTextField jtxtDireccion;
-    private javax.swing.JTextField jtxtDireccionX;
-    private javax.swing.JTextField jtxtDireccionY;
-    private javax.swing.JTextField jtxtNombre;
-    private javax.swing.JTextField jtxtRol;
+    public static javax.swing.JPasswordField jpwdContrasenia;
+    public static javax.swing.JTextField jtxtApellido;
+    public static javax.swing.JTextField jtxtCedula;
+    public static javax.swing.JTextField jtxtDireccion;
+    public static javax.swing.JTextField jtxtDireccionX;
+    public static javax.swing.JTextField jtxtDireccionY;
+    public static javax.swing.JTextField jtxtNombre;
+    public static javax.swing.JTextField jtxtRol;
     // End of variables declaration//GEN-END:variables
 }
