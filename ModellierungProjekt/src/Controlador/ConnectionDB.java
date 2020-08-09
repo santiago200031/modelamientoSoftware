@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  */
 public class ConnectionDB {
 
-    private static final String URL = "jdbc:mysql://localhost/modelamiento", USERNAME = "root", PASSWORD = "";
+    private static final String URL = "jdbc:mysql://localhost/motordebusqueda", USERNAME = "root", PASSWORD = "";
 
     public static Connection getConnection() {
         Connection conn = null;
@@ -28,4 +28,5 @@ public class ConnectionDB {
         }
         return conn;
     }
+
 }
