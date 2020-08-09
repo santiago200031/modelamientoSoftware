@@ -55,7 +55,6 @@ public class CrearNegocio extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setMaximumSize(new java.awt.Dimension(32767, 900));
 
-        jPanel1.setBorder(null);
         jPanel1.setPreferredSize(new java.awt.Dimension(720, 720));
 
         jtxtDireccion.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N

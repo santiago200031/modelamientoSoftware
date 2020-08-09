@@ -96,6 +96,7 @@ public class CrearAfiliado {
                     JOptionPane.showMessageDialog(null, "¡ERROR! Datos no guardados");
                     limpiar();
                 }
+                conn.close();
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e);
             }
