@@ -14,14 +14,17 @@ import java.util.logging.Logger;
  * @author Marlon 1
  */
 public class InterfazDatosAfiliado extends javax.swing.JFrame {
-public String cedulaUsu="";
+public String cedulaUsu;
     /**
      * Creates new form InterfazDatosAfiliado
      */
     public InterfazDatosAfiliado() {
         initComponents();
     }
-
+  public InterfazDatosAfiliado(String cedula) {
+        initComponents();
+        cedulaUsu=cedula;
+    }
   
 
     /**
@@ -52,6 +55,11 @@ public String cedulaUsu="";
         });
 
         jButton2.setText("NEGOCIOS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Salir");
 
@@ -116,8 +124,7 @@ public String cedulaUsu="";
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       InterfazEditarAfiliado vieweditarAfiliado;
     try {
-        vieweditarAfiliado = new InterfazEditarAfiliado();
-        vieweditarAfiliado.cedulaUsuario=cedulaUsu;
+        vieweditarAfiliado = new InterfazEditarAfiliado("1804149233");
         vieweditarAfiliado.setSize(jdp.getWidth(),jdp.getHeight());
       jdp.add(vieweditarAfiliado);
       vieweditarAfiliado.show();
@@ -128,6 +135,13 @@ public String cedulaUsu="";
       
       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        InterfazListaNegocios negocios = new InterfazListaNegocios("1804149233");
+         negocios.setSize(jdp.getWidth(),jdp.getHeight());
+        jdp.add(negocios);
+        negocios.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

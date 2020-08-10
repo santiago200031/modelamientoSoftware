@@ -21,8 +21,8 @@ import javax.swing.JOptionPane;
  */
 public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
 
-    String cedulaUsuario = "";
-    private String cont = "";
+    String cedulaUsuario;
+    private String cont ;
 
     /**
      * Creates new form InterfazEditarAfiliado
@@ -30,7 +30,12 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
     public InterfazEditarAfiliado() throws SQLException {
         initComponents();
         jpanelCambiarCon.setVisible(false);
-         
+        cargarDatos();
+    }
+    public InterfazEditarAfiliado(String cedula) throws SQLException {   
+        initComponents();
+        cedulaUsuario=cedula;
+        jpanelCambiarCon.setVisible(false);
         cargarDatos();
     }
 
@@ -41,7 +46,8 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
         Connection cc = cn.getConnection();
         String datos[] = new String[4];
         String sql = "";
-        sql = "select *from usuarios where CED_USU='" + cedulaUsuario + "'";
+        sql = "select * from usuarios where CED_USU='" + cedulaUsuario + "'";
+        //sql = "select * from usuarios where CED_USU='1804149233'";
         Statement psd = cc.createStatement();
         ResultSet rs = psd.executeQuery(sql);
         while (rs.next()) {
@@ -54,10 +60,11 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
         jtxtCedula.setText(datos[0]);
         jtxtNombre.setText(datos[1]);
         jtxtApellido.setText(datos[2]);
+        
         jtxtCedula.setEditable(false);
         jtxtNombre.setEditable(false);
         jtxtApellido.setEditable(false);
-       // cont = getSHA1(datos[3]);
+        cont = datos[3];
 
     }
 
@@ -278,9 +285,13 @@ public class InterfazEditarAfiliado extends javax.swing.JInternalFrame {
     private void jbtnCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCCActionPerformed
 
         jpanelCambiarCon.setVisible(true);
-        jtxtConN.setEnabled(false);
         jtxtConC.setEnabled(false);
         jbtnG.setEnabled(false);
+        try {
+            cargarDatos();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazEditarAfiliado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbtnCCActionPerformed
 
     private void jbtnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGActionPerformed

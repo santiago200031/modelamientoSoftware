@@ -5,19 +5,79 @@
  */
 package Vista;
 
+import Controlador.ConnectionDB;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Marlon 1
  */
-public class InterfazListaNegocios extends javax.swing.JFrame {
-
+public class InterfazListaNegocios extends javax.swing.JInternalFrame {
+public String cedulaUsu;
+public String ruc;
+    DefaultTableModel model;
     /**
      * Creates new form InterfazListaNegocios
      */
     public InterfazListaNegocios() {
         initComponents();
     }
-
+    public InterfazListaNegocios(String cedula) {
+        initComponents();
+        cedulaUsu=cedula;
+        mostrarListaNegocios();
+    }
+    public void mostrarListaNegocios(){
+          model = new DefaultTableModel();
+        String[] titulos = {"RUC", "CATEGORIA", "NOMBRE", "DIRECCION", "CIUDAD"};
+          String[] registros=new String[5];
+        model = new DefaultTableModel(null, titulos);
+        jTable1.setModel(model);
+      
+           
+    try {
+         ConnectionDB cc = new ConnectionDB();
+            Connection cn = cc.getConnection();
+            String sql = "";
+            sql = "select *from negocios where CED_USU_PER='"+cedulaUsu+"'";
+            Statement psd;
+        psd = cn.createStatement();
+         ResultSet rs = psd.executeQuery(sql);
+             while(rs.next()){
+              registros[0]=rs.getString("RUC_NEG");
+               registros[1]=rs.getString("CAT_NEG");
+                registros[2]=rs.getString("NOM_NEG");
+                 registros[3]=rs.getString("DIR_NEG_NOR");
+                  registros[4]=rs.getString("CIU_NEG");
+                   
+                  model.addRow(registros);
+              
+          }
+    } catch (SQLException ex) {
+        Logger.getLogger(InterfazListaNegocios.class.getName()).log(Level.SEVERE, null, ex);
+    }
+            
+    }
+    public void seleccionar(){
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (jTable1.getSelectedRow() != -1) {
+                    int fila = jTable1.getSelectedRow();
+                    ruc=jTable1.getValueAt(fila,0).toString();              
+                }
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,8 +93,8 @@ public class InterfazListaNegocios extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbtnEditar = new javax.swing.JButton();
+        jbtnLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +113,11 @@ public class InterfazListaNegocios extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTable1PropertyChange(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,16 +126,21 @@ public class InterfazListaNegocios extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NOMBRE", "RUC" }));
 
-        jButton1.setText("EDITAR INFORMACIÓN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnEditar.setText("EDITAR INFORMACIÓN");
+        jbtnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtnEditarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("LISTA DE PRODUCTOS");
+        jbtnLista.setText("LISTA DE PRODUCTOS");
+        jbtnLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnListaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,16 +157,16 @@ public class InterfazListaNegocios extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(36, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(jbtnEditar)
                         .addGap(80, 80, 80))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jbtnLista)
                 .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
@@ -110,11 +180,11 @@ public class InterfazListaNegocios extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jbtnEditar)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jbtnLista)
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
@@ -125,9 +195,20 @@ public class InterfazListaNegocios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbtnEditarActionPerformed
+
+    private void jTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable1PropertyChange
+        seleccionar();
+    }//GEN-LAST:event_jTable1PropertyChange
+
+    private void jbtnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnListaActionPerformed
+       IntefazListaProductos productos = new IntefazListaProductos(ruc);
+       productos.setSize(this.getDesktopPane().getWidth(),this.getDesktopPane().getHeight());
+       this.getDesktopPane().add(productos);
+       productos.show();
+    }//GEN-LAST:event_jbtnListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,13 +246,13 @@ public class InterfazListaNegocios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jbtnEditar;
+    private javax.swing.JButton jbtnLista;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,17 +5,66 @@
  */
 package Vista;
 
+import Controlador.ConnectionDB;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Marlon 1
  */
-public class IntefazListaProductos extends javax.swing.JFrame {
+public class IntefazListaProductos extends javax.swing.JInternalFrame {
+
+    public String rucNeg;
+    DefaultTableModel model;
 
     /**
      * Creates new form IntefazListaProductos
      */
     public IntefazListaProductos() {
         initComponents();
+    }
+
+    public IntefazListaProductos(String ruc) {
+        initComponents();
+        rucNeg = ruc;
+        cargarProductos();
+    }
+
+    public void cargarProductos() {
+        model = new DefaultTableModel();
+        String[] titulos = {"RUC", "CATEGORIA", "NOMBRE", "DIRECCION", "CIUDAD"};
+        String[] registros = new String[5];
+        model = new DefaultTableModel(null, titulos);
+        jTable1.setModel(model);
+
+        try {
+            ConnectionDB cc = new ConnectionDB();
+            Connection cn = cc.getConnection();
+            String sql = "";          
+           sql = "select *from productos where RUC_NEG_PER='" + rucNeg + "'";
+            Statement psd;
+            psd = cn.createStatement();
+            ResultSet rs = psd.executeQuery(sql);
+            while (rs.next()) {
+                registros[0] = rs.getString("NOM_PRO");
+                registros[1] = rs.getString("MAR_PRO");
+                registros[2] = rs.getString("PRE_PRO");
+                registros[3] = rs.getString("CAN_PRO");
+                Date fecha = rs.getDate("FEC_VEN_PRO");
+                registros[4]= String.valueOf(fecha);
+                model.addRow(registros);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(IntefazListaProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
