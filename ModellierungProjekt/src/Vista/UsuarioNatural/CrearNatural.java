@@ -123,7 +123,7 @@ public class CrearNatural extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 102, 102));
         jLabel9.setText("REGISTRO CLIENTE");
 
-        jcbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "CLIENTE" }));
+        jcbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "NATURAL" }));
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
