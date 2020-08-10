@@ -19,6 +19,24 @@ import javax.swing.JOptionPane;
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
  */
 public class CrearNegocio {
+    /*
+    public void llenarComboBox(String nombreTabla,String columna) throws SQLException{
+        DefaultComboBoxModel model=new DefaultComboBoxModel();
+       this.setModel(model);
+       Conexion cc= new Conexion();
+       java.sql.Connection cn = cc.conectar();
+       String sql="";
+       sql="Select *from "+nombreTabla;
+       java.sql.Statement psd = cn.createStatement();
+       ResultSet rs = psd.executeQuery(sql);
+         String dato;
+         while(rs.next()){
+             dato=rs.getString(columna);
+             model.addElement(dato);
+         }
+    }
+    */
+    
 
     private static final Connection conn = Controlador.ConnectionDB.getConnection();
 

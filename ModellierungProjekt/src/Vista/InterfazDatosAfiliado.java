@@ -126,7 +126,7 @@ public String cedulaUsu;
     try {
         vieweditarAfiliado = new InterfazEditarAfiliado("1804149233");
         vieweditarAfiliado.setSize(jdp.getWidth(),jdp.getHeight());
-      jdp.add(vieweditarAfiliado);
+        jdp.add(vieweditarAfiliado);
       vieweditarAfiliado.show();
     } catch (SQLException ex) {
         Logger.getLogger(InterfazDatosAfiliado.class.getName()).log(Level.SEVERE, null, ex);

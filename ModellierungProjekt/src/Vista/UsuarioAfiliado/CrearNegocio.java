@@ -81,6 +81,11 @@ public class CrearNegocio extends javax.swing.JFrame {
 
         jcbCategoria.setEditable(true);
         jcbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CARGAR CON CATEGORIAS", " " }));
+        jcbCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbCategoriaActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel5.setText("DIRECCION:");
@@ -279,6 +284,10 @@ public class CrearNegocio extends javax.swing.JFrame {
     private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbtnCancelarActionPerformed
+
+    private void jcbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbCategoriaActionPerformed
 
     /**
      * @param args the command line arguments

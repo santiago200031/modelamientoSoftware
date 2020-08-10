@@ -15,19 +15,17 @@ public class ConnectionDB {
 
     private static final String URL = "jdbc:mysql://127.0.0.1/motordebusqueda", USERNAME = "root", PASSWORD = "";
 
-    public  static Connection getConnection() {
+    public  static  Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
-           
+            Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);   
         }
         try {
             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException ex) {
-            
-            
+    
         }
         return conn;
     }

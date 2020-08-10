@@ -2,7 +2,6 @@ package Controlador.Afiliado;
 
 import Controlador.ConnectionDB;
 import Vista.Login;
-import static Vista.UsuarioAfiliado.CrearAfiliado.jcbxRol;
 import static Vista.UsuarioAfiliado.CrearAfiliado.jpwdContrasenia;
 import static Vista.UsuarioAfiliado.CrearAfiliado.jtxtApellido;
 import static Vista.UsuarioAfiliado.CrearAfiliado.jtxtCedula;
@@ -24,7 +23,6 @@ public class CrearAfiliado {
     public static void limpiar() {
         jtxtCedula.setText("");
         jpwdContrasenia.setText("");
-        jcbxRol.setSelectedIndex(0);
         jtxtNombre.setText("");
         jtxtApellido.setText("");
         jtxtDireccionX.setText("");
@@ -54,9 +52,6 @@ public class CrearAfiliado {
         } else if (jtxtDireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "INGRESAR DIRECCION");
             jtxtDireccion.requestFocus();
-        } else if (jcbxRol.getSelectedItem().equals("Seleccione")) {
-            JOptionPane.showMessageDialog(null, "SELECCIONAR ROL");
-            jcbxRol.requestFocus();
         } else {
             try {
                 ConnectionDB cc = new ConnectionDB();
@@ -65,7 +60,7 @@ public class CrearAfiliado {
                     String sql = "";
                     CED_USU = jtxtCedula.getText();
                     CONT_USU = String.valueOf(jpwdContrasenia.getPassword());
-                    ROL_USU = jcbxRol.getSelectedItem().toString();
+                    ROL_USU = "AFILIADO";
                     NOM_USU = jtxtNombre.getText();
                     APE_USU = jtxtApellido.getText();
                     DIR_X = jtxtDireccionX.getText();
