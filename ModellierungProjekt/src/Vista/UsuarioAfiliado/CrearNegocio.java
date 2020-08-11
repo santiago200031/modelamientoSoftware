@@ -1,12 +1,21 @@
 package Vista.UsuarioAfiliado;
 
 import static Controlador.Afiliado.AfiliadoVentanaPrincipal.USUARIO_AFILIADO;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
  */
 public class CrearNegocio extends javax.swing.JFrame {
+
+    private static final Connection conn = Controlador.ConnectionDB.getConnection();
 
     /**
      * Creates new form CrearNegocio
@@ -80,10 +89,14 @@ public class CrearNegocio extends javax.swing.JFrame {
         jLabel3.setText("CATEGORIA:");
 
         jcbCategoria.setEditable(true);
-        jcbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CARGAR CON CATEGORIAS", " " }));
         jcbCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbCategoriaActionPerformed(evt);
+            }
+        });
+        jcbCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcbCategoriaKeyTyped(evt);
             }
         });
 
@@ -288,6 +301,28 @@ public class CrearNegocio extends javax.swing.JFrame {
     private void jcbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCategoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbCategoriaActionPerformed
+
+    private void jcbCategoriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbCategoriaKeyTyped
+        try {
+            llenarComboBox("categorias", "NOM_CAT");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR EN CARGA");
+        }
+
+    }//GEN-LAST:event_jcbCategoriaKeyTyped
+    public void llenarComboBox(String nombreTabla, String columna) throws SQLException {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        String sql = "";
+        sql = "Select *from " + nombreTabla;
+
+        java.sql.Statement psd = conn.createStatement();
+        ResultSet rs = psd.executeQuery(sql);
+        String dato;
+        while (rs.next()) {
+            dato = rs.getString(columna);
+            model.addElement(dato);
+        }
+    }
 
     /**
      * @param args the command line arguments
