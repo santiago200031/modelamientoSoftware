@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
  */
 public class NaturalVentanaPrincipal {
-
+ 
     public static String USUARIO_NATURAL;
     private static final String[] titulos = {"Codigo", "Nombre", "Cantidad", "Precio U.", "Subtotal"};
     private static final DefaultTableModel tableModel = new DefaultTableModel(null, titulos);
@@ -155,9 +155,11 @@ public class NaturalVentanaPrincipal {
     }
 
     public static void buscarProductos(String nombre, KeyEvent evt, JTable tabla) throws SQLException {
+        DefaultTableModel model;
         String[] titulos1 = {"Nombre", "Marca", "Precio", "Vencimiento"};
-        DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos1);
-        tabla.setModel(tableModel);
+        model = new DefaultTableModel(null, titulos);
+        tabla.setModel(model);
+       
         if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
             int longitud = nombre.length();
             int pos = 0;
@@ -173,16 +175,16 @@ public class NaturalVentanaPrincipal {
             sql = "select * from productos where NOM_PRO ='" + nombre + "' OR NOM_PRO LIKE '" + cc1 + "%" + cc2 + "%" + cc3 + "'";
             Statement psd = cn.createStatement();
             ResultSet rs = psd.executeQuery(sql);
-            Object[] datosProducto = new Object[4];
+            String [] datosProducto = new String[4];
             while (rs.next()) {
                 datosProducto[0] = (rs.getString("NOM_PRO"));
                 datosProducto[1] = (rs.getString("MAR_PRO"));
-                datosProducto[2] = (rs.getFloat("PRE_PRO"));
+                datosProducto[2] = String.valueOf(rs.getFloat("PRE_PRO"));
                 Date fecha = rs.getDate("FEC_VEN_PRO");
                 datosProducto[3] = (String.valueOf(fecha));
-                modeloTabla.addRow(datosProducto);
+                model.addRow(datosProducto);
             }
-            tabla.setModel(tableModel);
+           
         }
 
     }
