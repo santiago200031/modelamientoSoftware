@@ -35,15 +35,14 @@ public class NaturalVentanaPrincipal {
         evt.setKeyChar(String.valueOf(evt.getKeyChar()).toUpperCase().charAt(0));
     }
 
-    public static void agregarDetalle(String nombre, String codigo, JTable jtblDetalle, int cantidad, JLabel jlblTotal) {
+    public static void agregarDetalle(String nombre, JTable jtblDetalle, int cantidad, JLabel jlblTotal) {
         String sql = "SELECT * FROM PRODUCTOS WHERE NOM_PRO = ? AND ID_PRO = ?;";
         try {
             PreparedStatement ps = Controlador.ConnectionDB.getConnection().prepareStatement(sql);
             ps.setString(1, nombre);
-            ps.setString(2, codigo);
             Object[] datos = new Object[5];
             for (int i = 0; i < jtblDetalle.getRowCount(); i++) {
-                if (tableModel.getValueAt(i, 0).toString().equals(codigo)) {
+                if (tableModel.getValueAt(i, 1).toString().equals(nombre)) {
                     tableModel.setValueAt(cantidad, i, 2);
                     jtblDetalle.setModel(tableModel);
                     tableModel.setValueAt(cantidad * (float) tableModel.getValueAt(i, 3), i, 4);
@@ -146,7 +145,7 @@ public class NaturalVentanaPrincipal {
                     jtxtNombreProducto.setText(rs.getString("NOM_PRO"));
                     break;
                 case "NOMBRE":
-                    
+
                     break;
             }
         } catch (SQLException ex) {
@@ -154,7 +153,9 @@ public class NaturalVentanaPrincipal {
         }
     }
 
-    public static ArrayList<ArrayList> buscarProductos(String nombre, KeyEvent evt) throws SQLException {
+    public static ArrayList<ArrayList> buscarProductos(String nombre, KeyEvent evt, JTable tabla) throws SQLException {
+        String[] titulos1 = {"Nombre", "Marca", "Precio", "Vencimiento"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos1);
         if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
             ArrayList<ArrayList> productos = new ArrayList<>();
             ArrayList<String> datos = new ArrayList<>();
@@ -172,22 +173,17 @@ public class NaturalVentanaPrincipal {
             sql = "select * from productos where NOM_PRO ='" + nombre + "' OR NOM_PRO LIKE '" + cc1 + "%" + cc2 + "%" + cc3 + "'";
             Statement psd = cn.createStatement();
             ResultSet rs = psd.executeQuery(sql);
+            Object[] datosProducto = new Object[4];
             while (rs.next()) {
-                datos.add(rs.getString("NOM_PRO"));
-                productos.add(datos);
-                listModel.addElement(rs.getString("NOM_PRO"));
-                /*
-                datos.add(rs.getString("MAR_PRO"));
-                datos.add(rs.getString("PRE_PRO"));
-                datos.add(rs.getString("CAN_PRO"));
-                datos.add(rs.getString("FEC_VEN_PRO"));
-                 */
+                datosProducto[0] = (rs.getString("NOM_PRO"));
+                datosProducto[1] = (rs.getString("MAR_PRO"));
+                datosProducto[2] = (rs.getString("PRE_PRO"));
+                datosProducto[3] = (rs.getString("FEC_VEN_PRO"));
+                modeloTabla.addRow(datosProducto);
                 datos.clear();
             }
-            ba.jlBusqueda.setModel(listModel);
-            if (!ba.isActive()) {
-                ba.setVisible(true);
-            }
+            tabla.setModel(tableModel);
+            
             return productos;
         }
         return null;

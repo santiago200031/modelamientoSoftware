@@ -52,7 +52,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        productosVarios = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiCerrarSesion = new javax.swing.JMenuItem();
@@ -155,7 +155,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        productosVarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -166,7 +166,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(productosVarios);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -308,7 +308,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jpmSugerenciaNombreMouseClicked
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
-        Controlador.Natural.NaturalVentanaPrincipal.agregarDetalle(jtxtNombreProducto.getText(),jtxtNombreProducto.getText(), jtblDetalle, Integer.parseInt(jtxtCantidad.getText()), jlblTotal);
+        Controlador.Natural.NaturalVentanaPrincipal.agregarDetalle(jtxtNombreProducto.getText(), jtblDetalle, Integer.parseInt(jtxtCantidad.getText()), jlblTotal);
         Controlador.Natural.NaturalVentanaPrincipal.calcularTotal(jtblDetalle, jlblTotal);
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 
@@ -377,7 +377,6 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbtnAgregar;
     private javax.swing.JButton jbtnReservar;
     private javax.swing.JLabel jlblTotal;
@@ -386,5 +385,6 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jtblDetalle;
     public static javax.swing.JTextField jtxtCantidad;
     public static javax.swing.JTextField jtxtNombreProducto;
+    private javax.swing.JTable productosVarios;
     // End of variables declaration//GEN-END:variables
 }
