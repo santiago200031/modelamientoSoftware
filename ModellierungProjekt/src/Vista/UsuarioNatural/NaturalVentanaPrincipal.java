@@ -308,7 +308,11 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jpmSugerenciaNombreMouseClicked
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
-        Controlador.Natural.NaturalVentanaPrincipal.agregarDetalle(jtxtNombreProducto.getText(), jtblDetalle, Integer.parseInt(jtxtCantidad.getText()), jlblTotal);
+        if (productosVarios.getSelectedRow() != -1) {
+            int fila = productosVarios.getSelectedRow();
+            Controlador.Natural.NaturalVentanaPrincipal.agregarDetalle(productosVarios.getValueAt(fila, 0).toString(), jtblDetalle, Integer.parseInt(jtxtCantidad.getText()), jlblTotal);
+        }
+
         Controlador.Natural.NaturalVentanaPrincipal.calcularTotal(jtblDetalle, jlblTotal);
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 

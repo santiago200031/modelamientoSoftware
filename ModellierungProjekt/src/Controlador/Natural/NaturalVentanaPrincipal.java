@@ -37,7 +37,7 @@ public class NaturalVentanaPrincipal {
     }
 
     public static void agregarDetalle(String nombre, JTable jtblDetalle, int cantidad, JLabel jlblTotal) {
-        String sql = "SELECT * FROM PRODUCTOS WHERE NOM_PRO = ? AND ID_PRO = ?;";
+        String sql = "SELECT * FROM PRODUCTOS WHERE NOM_PRO = ?;";
         try {
             PreparedStatement ps = Controlador.ConnectionDB.getConnection().prepareStatement(sql);
             ps.setString(1, nombre);
@@ -157,7 +157,7 @@ public class NaturalVentanaPrincipal {
     public static void buscarProductos(String nombre, KeyEvent evt, JTable tabla) throws SQLException {
         DefaultTableModel model;
         String[] titulos1 = {"Nombre", "Marca", "Precio", "Vencimiento"};
-        model = new DefaultTableModel(null, titulos);
+        model = new DefaultTableModel(null, titulos1);
         tabla.setModel(model);
        
         if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
