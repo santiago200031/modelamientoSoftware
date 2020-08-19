@@ -157,8 +157,8 @@ public class NaturalVentanaPrincipal {
 
     public static ArrayList<ArrayList> buscarProductos(String nombre, KeyEvent evt) throws SQLException {
         if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            ArrayList<ArrayList> productos = new ArrayList<ArrayList>();
-            ArrayList<String> datos = new ArrayList<String>();
+            ArrayList<ArrayList> productos = new ArrayList<>();
+            ArrayList<String> datos = new ArrayList<>();
             int longitud = nombre.length();
             int pos = 0;
             int pos2 = (longitud / 2) - 1;
