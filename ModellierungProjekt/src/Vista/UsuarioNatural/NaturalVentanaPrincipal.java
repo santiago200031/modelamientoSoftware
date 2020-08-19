@@ -326,7 +326,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
 
     private void jtxtNombreProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreProductoKeyReleased
         try {
-            Controlador.Natural.NaturalVentanaPrincipal.buscarProductos(jtxtNombreProducto.getText(), evt);
+            Controlador.Natural.NaturalVentanaPrincipal.buscarProductos(jtxtNombreProducto.getText(), evt, productosVarios);
             //Controlador.Natural.NaturalVentanaPrincipal.busquedaAproximadaNombre(jtxtNombreProducto.getText());
         } catch (SQLException ex) {
             Logger.getLogger(NaturalVentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);

@@ -5,6 +5,7 @@ import Vista.UsuarioNatural.BusquedaAproximada;
 import static Vista.UsuarioNatural.NaturalVentanaPrincipal.jtxtNombreProducto;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -153,12 +154,11 @@ public class NaturalVentanaPrincipal {
         }
     }
 
-    public static ArrayList<ArrayList> buscarProductos(String nombre, KeyEvent evt, JTable tabla) throws SQLException {
+    public static void buscarProductos(String nombre, KeyEvent evt, JTable tabla) throws SQLException {
         String[] titulos1 = {"Nombre", "Marca", "Precio", "Vencimiento"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos1);
+        tabla.setModel(tableModel);
         if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            ArrayList<ArrayList> productos = new ArrayList<>();
-            ArrayList<String> datos = new ArrayList<>();
             int longitud = nombre.length();
             int pos = 0;
             int pos2 = (longitud / 2) - 1;
@@ -177,15 +177,13 @@ public class NaturalVentanaPrincipal {
             while (rs.next()) {
                 datosProducto[0] = (rs.getString("NOM_PRO"));
                 datosProducto[1] = (rs.getString("MAR_PRO"));
-                datosProducto[2] = (rs.getString("PRE_PRO"));
-                datosProducto[3] = (rs.getString("FEC_VEN_PRO"));
+                datosProducto[2] = (rs.getFloat("PRE_PRO"));
+                Date fecha = rs.getDate("FEC_VEN_PRO");
+                datosProducto[3] = (String.valueOf(fecha));
                 modeloTabla.addRow(datosProducto);
-                datos.clear();
             }
             tabla.setModel(tableModel);
-            
-            return productos;
         }
-        return null;
+
     }
 }
