@@ -2,7 +2,6 @@ package Controlador.Natural;
 
 import Controlador.ConnectionDB;
 import Vista.UsuarioNatural.BusquedaAproximada;
-import static Vista.UsuarioNatural.NaturalVentanaPrincipal.jtxtCodigoProducto;
 import static Vista.UsuarioNatural.NaturalVentanaPrincipal.jtxtNombreProducto;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -147,7 +146,7 @@ public class NaturalVentanaPrincipal {
                     jtxtNombreProducto.setText(rs.getString("NOM_PRO"));
                     break;
                 case "NOMBRE":
-                    jtxtCodigoProducto.setText(rs.getString("ID_PRO"));
+                    
                     break;
             }
         } catch (SQLException ex) {

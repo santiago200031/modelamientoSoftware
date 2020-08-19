@@ -87,7 +87,7 @@ public class BusquedaAproximada extends javax.swing.JFrame {
         if (tipoBusqueda.equals("NOMBRE")) {
             NaturalVentanaPrincipal.jtxtNombreProducto.setText(nomCodProducto);
         } else if (tipoBusqueda.equals("CODIGO")) {
-            NaturalVentanaPrincipal.jtxtCodigoProducto.setText(nomCodProducto);
+        
         }
         Controlador.Natural.NaturalVentanaPrincipal.cargarOtroDato(nomCodProducto);
         this.dispose();
