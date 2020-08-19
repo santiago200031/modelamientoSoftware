@@ -14,18 +14,20 @@ import java.util.logging.Logger;
  * @author Marlon 1
  */
 public class InterfazDatosAfiliado extends javax.swing.JFrame {
-public String cedulaUsu;
+
+    public String cedulaUsu;
+
     /**
      * Creates new form InterfazDatosAfiliado
      */
     public InterfazDatosAfiliado() {
         initComponents();
     }
-  public InterfazDatosAfiliado(String cedula) {
+
+    public InterfazDatosAfiliado(String cedula) {
         initComponents();
-        cedulaUsu=cedula;
+        cedulaUsu = cedula;
     }
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +66,11 @@ public String cedulaUsu;
         jButton3.setText("Salir");
 
         jButton4.setText("PRODUCTOS ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,29 +126,36 @@ public String cedulaUsu;
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      InterfazEditarAfiliado vieweditarAfiliado;
-    try {
-        vieweditarAfiliado = new InterfazEditarAfiliado("1804149233");
-        vieweditarAfiliado.setSize(jdp.getWidth(),jdp.getHeight());
-        jdp.add(vieweditarAfiliado);
-      vieweditarAfiliado.show();
-    } catch (SQLException ex) {
-        Logger.getLogger(InterfazDatosAfiliado.class.getName()).log(Level.SEVERE, null, ex);
-    }
-       
-      
-      
+        InterfazEditarAfiliado vieweditarAfiliado;
+        try {
+            vieweditarAfiliado = new InterfazEditarAfiliado();
+            vieweditarAfiliado.setSize(jdp.getWidth(), jdp.getHeight());
+            jdp.add(vieweditarAfiliado);
+            vieweditarAfiliado.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazDatosAfiliado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        InterfazListaNegocios negocios = new InterfazListaNegocios("1804149233");
-         negocios.setSize(jdp.getWidth(),jdp.getHeight());
+        InterfazListaNegocios negocios = new InterfazListaNegocios();
+        negocios.setSize(jdp.getWidth(), jdp.getHeight());
         jdp.add(negocios);
         negocios.show();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        IntefazListaProductos productos = new IntefazListaProductos();
+        productos.setSize(jdp.getWidth(), jdp.getHeight());
+        jdp.add(productos);
+        productos.show();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
