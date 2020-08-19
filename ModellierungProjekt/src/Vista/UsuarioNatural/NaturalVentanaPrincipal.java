@@ -6,6 +6,9 @@
 package Vista.UsuarioNatural;
 
 import Vista.Login;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.PopupFactory;
 
 /**
@@ -13,10 +16,10 @@ import javax.swing.PopupFactory;
  * @author Santiago Villavicencio villavicencioandrs@gmail.com
  */
 public class NaturalVentanaPrincipal extends javax.swing.JFrame {
-    
+
     private static PopupFactory model;
     private static String USUARIO_NATURAL;
-    
+
     public NaturalVentanaPrincipal() {
         initComponents();
     }
@@ -210,7 +213,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        this.getRootPane().setDefaultButton(jbtnReservar);
+        //this.getRootPane().setDefaultButton(jbtnReservar);
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(70, 27));
 
@@ -270,7 +273,12 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxtNombreProductoKeyTyped
 
     private void jtxtNombreProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreProductoKeyReleased
-        Controlador.Natural.NaturalVentanaPrincipal.busquedaAproximadaNombre(jtxtNombreProducto.getText());
+        try {
+            Controlador.Natural.NaturalVentanaPrincipal.buscarProductos(jtxtNombreProducto.getText(), evt);
+            //Controlador.Natural.NaturalVentanaPrincipal.busquedaAproximadaNombre(jtxtNombreProducto.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(NaturalVentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jtxtNombreProductoKeyReleased
 
     private void jtxtCodigoProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtCodigoProductoKeyReleased
@@ -297,7 +305,7 @@ public class NaturalVentanaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NaturalVentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */

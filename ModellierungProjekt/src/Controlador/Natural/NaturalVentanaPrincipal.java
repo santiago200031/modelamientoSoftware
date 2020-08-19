@@ -1,12 +1,16 @@
 package Controlador.Natural;
 
+import Controlador.ConnectionDB;
 import Vista.UsuarioNatural.BusquedaAproximada;
 import static Vista.UsuarioNatural.NaturalVentanaPrincipal.jtxtCodigoProducto;
 import static Vista.UsuarioNatural.NaturalVentanaPrincipal.jtxtNombreProducto;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -149,5 +153,44 @@ public class NaturalVentanaPrincipal {
         } catch (SQLException ex) {
             Logger.getLogger(NaturalVentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static ArrayList<ArrayList> buscarProductos(String nombre, KeyEvent evt) throws SQLException {
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            ArrayList<ArrayList> productos = new ArrayList<ArrayList>();
+            ArrayList<String> datos = new ArrayList<String>();
+            int longitud = nombre.length();
+            int pos = 0;
+            int pos2 = (longitud / 2) - 1;
+            int pos3 = longitud - 1;
+            String cc1 = String.valueOf(nombre.charAt(pos));
+            String cc2 = String.valueOf(nombre.charAt(pos2));
+            String cc3 = String.valueOf(nombre.charAt(pos3));
+            ConnectionDB cc = new ConnectionDB();
+            Connection cn = cc.getConnection();
+            String sql = "";
+            // OR NOM_PRO LIKE '" + cc1 + "%" + cc2 + "%" + cc3 + "'
+            sql = "select * from productos where NOM_PRO ='" + nombre + "' OR NOM_PRO LIKE '" + cc1 + "%" + cc2 + "%" + cc3 + "'";
+            Statement psd = cn.createStatement();
+            ResultSet rs = psd.executeQuery(sql);
+            while (rs.next()) {
+                datos.add(rs.getString("NOM_PRO"));
+                productos.add(datos);
+                listModel.addElement(rs.getString("NOM_PRO"));
+                /*
+                datos.add(rs.getString("MAR_PRO"));
+                datos.add(rs.getString("PRE_PRO"));
+                datos.add(rs.getString("CAN_PRO"));
+                datos.add(rs.getString("FEC_VEN_PRO"));
+                 */
+                datos.clear();
+            }
+            ba.jlBusqueda.setModel(listModel);
+            if (!ba.isActive()) {
+                ba.setVisible(true);
+            }
+            return productos;
+        }
+        return null;
     }
 }
