@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author Marlon 1
  */
 public class InterfazDatosAfiliado extends javax.swing.JFrame {
-
+    
     public String cedulaUsu;
 
     /**
@@ -23,7 +23,7 @@ public class InterfazDatosAfiliado extends javax.swing.JFrame {
     public InterfazDatosAfiliado() {
         initComponents();
     }
-
+    
     public InterfazDatosAfiliado(String cedula) {
         initComponents();
         cedulaUsu = cedula;
@@ -64,6 +64,11 @@ public class InterfazDatosAfiliado extends javax.swing.JFrame {
         });
 
         jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("PRODUCTOS ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +161,10 @@ public class InterfazDatosAfiliado extends javax.swing.JFrame {
         jdp.add(productos);
         productos.show();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new Login().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
